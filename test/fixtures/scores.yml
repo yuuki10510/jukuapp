@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  subject: MyString
+  score: 1
+  test_type: MyString
+  term: MyString
+
+two:
+  student: two
+  subject: MyString
+  score: 1
+  test_type: MyString
+  term: MyString

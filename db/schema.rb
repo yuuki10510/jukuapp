@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_22_141414) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_22_142849) do
   create_table "parent_students", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "parent_id", null: false
@@ -18,6 +18,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_141414) do
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_parent_students_on_parent_id"
     t.index ["student_id"], name: "index_parent_students_on_student_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "score"
+    t.integer "student_id", null: false
+    t.string "subject"
+    t.string "term"
+    t.string "test_type"
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_scores_on_student_id"
   end
 
   create_table "student_profiles", force: :cascade do |t|
@@ -45,5 +56,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_141414) do
 
   add_foreign_key "parent_students", "parents"
   add_foreign_key "parent_students", "students"
+  add_foreign_key "scores", "students"
   add_foreign_key "student_profiles", "users"
 end
