@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root "dashboards#home"
 
   namespace :admin do
+    get "scores/new"
+    get "scores/create"
+    get "scores/edit"
+    get "scores/update"
     get "students/index"
     get "students/show"
     resources :students do
