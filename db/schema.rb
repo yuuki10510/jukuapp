@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_22_145351) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_22_152805) do
   create_table "announcements", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -61,8 +61,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_22_145351) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "withdrawals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "reason"
+    t.integer "student_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_withdrawals_on_student_id"
+  end
+
   add_foreign_key "parent_students", "parents"
   add_foreign_key "parent_students", "students"
   add_foreign_key "scores", "students"
   add_foreign_key "student_profiles", "users"
+  add_foreign_key "withdrawals", "students"
 end
