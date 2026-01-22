@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "dashboards#home"
 
   namespace :admin do
+    get "students/index"
+    get "students/show"
     resources :students do
       resources :scores
       resource :withdrawal, only: [:new, :create]
