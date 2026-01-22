@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "dashboards#home"
 
   namespace :admin do
+    get "withdrawals/new"
+    get "withdrawals/create"
     get "announcements/index"
     get "announcements/new"
     get "announcements/create"
