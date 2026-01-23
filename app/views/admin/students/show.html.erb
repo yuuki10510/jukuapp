@@ -1,2 +1,4 @@
-<h1>Admin::Students#show</h1>
-<p>Find me in app/views/admin/students/show.html.erb</p>
+<h2><%= @student.name %>さんの成績</h2>
+
+<%= line_chart @scores.group(:term).average(:score), xtitle: "学期", ytitle: "平均点" %>
+<%= bar_chart @scores.group(:subject).average(:score), xtitle: "教科", ytitle: "平均点" %>
