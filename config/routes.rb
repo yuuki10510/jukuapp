@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "scores/index"
   devise_for :users
 
   root "dashboards#home"
