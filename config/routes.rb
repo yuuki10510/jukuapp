@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "announcements/index"
   get "announcements/show"
   get "scores/index"
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   root "dashboards#home"
 
