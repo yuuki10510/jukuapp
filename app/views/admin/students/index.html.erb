@@ -1,2 +1,23 @@
-<h1>Admin::Students#index</h1>
-<p>Find me in app/views/admin/students/index.html.erb</p>
+<h1>生徒一覧</h1>
+
+<%= form_with url: admin_students_path, method: :get, local: true do %>
+  <%= select_tag :grade, options_for_select((1..6).map { |g| ["#{g}年", g] }, params[:grade]), include_blank: "学年選択" %>
+  <%= submit_tag "絞り込む" %>
+<% end %>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>学年</th>
+    <th>操作</th>
+  </tr>
+  <% @students.each do |student| %>
+    <% profile = student.student_profile %>
+    <% next unless profile&.active? %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= profile.grade %>年</td>
+      <td><%= link_to "詳細", admin_student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
