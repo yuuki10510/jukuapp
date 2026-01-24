@@ -1,0 +1,39 @@
+<h2>新規登録</h2>
+
+<%= form_with model: resource, url: registration_path(resource_name), local: true do |f| %>
+  <%= hidden_field_tag "user[role]", params[:role] %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <% if params[:role] == "student" %>
+    <div>
+      <%= label_tag :school_name, "学校名" %>
+      <%= text_field_tag "user[school_name]" %>
+    </div>
+
+    <div>
+      <%= label_tag :grade, "学年" %>
+      <%= select_tag "user[grade]", options_for_select((1..6).map { |g| ["#{g}年", g] }) %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit "登録" %>
+<% end %>
