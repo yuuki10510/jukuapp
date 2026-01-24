@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, parent: 1, student: 2 }
 
-  
+  validates :name, presence: true
+  validates :role, presence: true
 
   has_one :student_profile, dependent: :destroy
   has_many :parent_students, foreign_key: :parent_id

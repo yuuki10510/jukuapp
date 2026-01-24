@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
 
+  devise_scope :user do
+    get "users/sign_up/select_role", to: "users/registrations#select_role", as: :select_role
+  end
   root "dashboards#home"
 
   # 保護者・生徒 共通画面
