@@ -1,2 +1,24 @@
-<h1>Scores#index</h1>
-<p>Find me in app/views/scores/index.html.erb</p>
+<h1>成績一覧</h1>
+
+<table>
+  <tr>
+    <th>生徒</th>
+    <th>教科</th>
+    <th>点数</th>
+    <th>テスト</th>
+    <th>学期</th>
+  </tr>
+  <% @scores.each do |score| %>
+    <tr>
+      <td><%= score.student.name %></td>
+      <td><%= score.subject_i18n %></td>
+      <td><%= score.score %></td>
+      <td><%= score.test_type_i18n %></td>
+      <td><%= score.term_i18n %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>グラフ</h2>
+<%= line_chart @scores.group(:term).average(:score) %>
+<%= bar_chart @scores.group(:subject).average(:score) %>
