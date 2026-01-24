@@ -1,4 +1,27 @@
-<h2><%= @student.name %>さんの成績</h2>
+<h2><%= @student.name %>さん</h2>
 
-<%= line_chart @scores.group(:term).average(:score), xtitle: "学期", ytitle: "平均点" %>
-<%= bar_chart @scores.group(:subject).average(:score), xtitle: "教科", ytitle: "平均点" %>
+<%= link_to "成績追加", new_admin_student_score_path(@student) %>
+
+<h3>成績一覧</h3>
+<table>
+  <tr>
+    <th>教科</th>
+    <th>点数</th>
+    <th>テスト</th>
+    <th>学期</th>
+    <th></th>
+  </tr>
+  <% @scores.each do |score| %>
+    <tr>
+      <td><%= score.subject_i18n %></td>
+      <td><%= score.score %></td>
+      <td><%= score.test_type_i18n %></td>
+      <td><%= score.term_i18n %></td>
+      <td><%= link_to "編集", edit_admin_student_score_path(@student, score) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>成績グラフ</h3>
+<%= line_chart @scores.group(:term).average(:score) %>
+<%= bar_chart @scores.group(:subject).average(:score) %>
