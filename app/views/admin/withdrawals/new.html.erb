@@ -1,2 +1,10 @@
-<h1>Admin::Withdrawals#new</h1>
-<p>Find me in app/views/admin/withdrawals/new.html.erb</p>
+<h2>退塾処理</h2>
+
+<%= form_with model: [ :admin, @student, @withdrawal ], local: true do |f| %>
+  <div>
+    <%= f.label :reason, "退塾理由" %>
+    <%= f.text_area :reason, required: true %>
+  </div>
+
+  <%= f.submit "退塾処理を確定" %>
+<% end %>
