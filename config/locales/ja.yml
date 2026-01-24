@@ -1,0 +1,60 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        role: 役割
+    enums:
+      user:
+        role:
+          admin: 管理者
+          parent: 保護者
+          student: 生徒
+
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      required: "を入力してください"
+      taken: "はすでに使用されています"
+      too_short: "は%{count}文字以上で入力してください"
+      too_long: "は%{count}文字以内で入力してください"
+      invalid: "は不正な値です"
+      confirmation: "と一致しません"
+      accepted: "を受諾してください"
+      inclusion: "は一覧にありません"
+      exclusion: "は予約されています"
+      wrong_length: "は%{count}文字で入力してください"
+      not_a_number: "は数値で入力してください"
+      greater_than: "%{count}より大きい値にしてください"
+      greater_than_or_equal_to: "%{count}以上の値にしてください"
+      less_than: "%{count}より小さい値にしてください"
+      less_than_or_equal_to: "%{count}以下の値にしてください"
+      odd: "は奇数にしてください"
+      even: "は偶数にしてください"
+
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
+
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前へ"
+      next: "次へ"
+      truncate: "..."
+
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"

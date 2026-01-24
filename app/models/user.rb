@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, parent: 1, student: 2 }
 
+  
+
   has_one :student_profile, dependent: :destroy
   has_many :parent_students, foreign_key: :parent_id
   has_many :children, through: :parent_students, source: :student

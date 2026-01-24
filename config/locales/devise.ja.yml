@@ -1,0 +1,58 @@
+ja:
+  devise:
+    sessions:
+      new:
+        sign_in: "ログイン"
+        remember_me: "ログイン状態を保持する"
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+
+    registrations:
+      new:
+        sign_up: "新規登録"
+      edit:
+        title: "アカウント編集"
+        update: "更新"
+        cancel_my_account: "アカウントを削除"
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を更新しました。"
+
+    passwords:
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"
+        send_me_reset_password_instructions: "パスワード再設定メールを送信"
+      edit:
+        change_your_password: "パスワードを変更"
+        new_password: "新しいパスワード"
+        confirm_new_password: "新しいパスワード（確認）"
+        change_my_password: "パスワードを変更する"
+      send_instructions: "パスワード再設定メールを送信しました。"
+      updated: "パスワードを変更しました。"
+
+    confirmations:
+      confirmed: "メールアドレスが確認されました。"
+      send_instructions: "確認メールを送信しました。"
+
+    unlocks:
+      send_instructions: "アカウントロック解除のメールを送信しました。"
+
+    mailer:
+      confirmation_instructions:
+        subject: "メールアドレス確認のお願い"
+      reset_password_instructions:
+        subject: "パスワード再設定のご案内"
+      unlock_instructions:
+        subject: "アカウントロック解除のご案内"
+
+  helpers:
+    submit:
+      user:
+        create: "登録する"
+        update: "更新する"
+
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
