@@ -1,6 +1,4 @@
-class Admin::ScoresController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+class Admin::ScoresController < Admin::BaseController
   before_action :set_student
 
   def new
@@ -37,9 +35,5 @@ class Admin::ScoresController < ApplicationController
 
   def score_params
     params.require(:score).permit(:subject, :score, :test_type, :term)
-  end
-
-  def ensure_admin
-    redirect_to root_path unless current_user.admin?
   end
 end

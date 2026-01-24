@@ -1,6 +1,4 @@
-class Admin::StudentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+class Admin::StudentsController < Admin::BaseController
 
   def index
     @students = User.student.includes(:student_profile)
@@ -10,11 +8,5 @@ class Admin::StudentsController < ApplicationController
   def show
     @student = User.student.find(params[:id])
     @scores = @student.scores
-  end
-
-  private
-
-  def ensure_admin
-    redirect_to root_path unless current_user.admin?
   end
 end

@@ -1,6 +1,4 @@
-class Admin::AnnouncementsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+class Admin::AnnouncementsController < Admin::BaseController
 
   def index
     @announcements = Announcement.all
@@ -42,9 +40,5 @@ class Admin::AnnouncementsController < ApplicationController
 
   def announcement_params
     params.require(:announcement).permit(:title, :body)
-  end
-
-  def ensure_admin
-    redirect_to root_path unless current_user.admin?
   end
 end

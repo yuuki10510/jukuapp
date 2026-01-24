@@ -1,6 +1,4 @@
-class Admin::WithdrawalsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+class Admin::WithdrawalsController < Admin::BaseController
   before_action :set_student
 
   def new
@@ -25,9 +23,5 @@ class Admin::WithdrawalsController < ApplicationController
 
   def withdrawal_params
     params.require(:withdrawal).permit(:reason)
-  end
-
-  def ensure_admin
-    redirect_to root_path unless current_user.admin?
   end
 end
