@@ -1,2 +1,19 @@
-<h1>Admin::Announcements#index</h1>
-<p>Find me in app/views/admin/announcements/index.html.erb</p>
+<h1>お知らせ一覧</h1>
+
+<%= link_to "新規作成", new_admin_announcement_path %>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>操作</th>
+  </tr>
+  <% @announcements.each do |a| %>
+    <tr>
+      <td><%= a.title %></td>
+      <td>
+        <%= link_to "編集", edit_admin_announcement_path(a) %> |
+        <%= link_to "削除", admin_announcement_path(a), method: :delete, data: { confirm: "削除しますか？" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
