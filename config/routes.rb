@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   root "dashboards#home"
 
   namespace :admin do
+    get "parent_students/new"
+    get "parent_students/create"
+    get "parent_students/destroy"
     get "withdrawals/new"
     get "withdrawals/create"
     get "announcements/index"
