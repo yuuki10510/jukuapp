@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboards/home"
   #get "users/sign_up/select", to: "users/registrations#select_role", as: :select_role
   get "announcements/index"
   get "announcements/show"
