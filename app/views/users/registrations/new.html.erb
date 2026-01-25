@@ -16,16 +16,17 @@
       <%= text_field_tag "user[school_name]" %>
     </div>
 
-    <div>
-      <%= label_tag :grade, "学年" %>
-      <%= select_tag "user[grade]", options_for_select((1..6).map { |g| ["#{g}年", g] }) %>
+    <div class="field">
+      <%= f.label :grade, "学年" %>
+      <%= f.select :grade,
+        [
+          ["小1", "小1"], ["小2", "小2"], ["小3", "小3"], ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
+          ["中1", "中1"], ["中2", "中2"], ["中3", "中3"],
+          ["高1", "高1"], ["高2", "高2"], ["高3", "高3"]
+        ],
+        prompt: "選択してください" %>
     </div>
   <% end %>
-
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
 
   <div>
     <%= f.label :password %>

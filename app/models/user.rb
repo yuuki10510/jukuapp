@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :role, presence: true
+  validates :email, presence: true, unless: :student?
 
   has_one :student_profile, dependent: :destroy
   has_many :parent_students, foreign_key: :parent_id
