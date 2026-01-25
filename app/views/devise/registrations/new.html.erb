@@ -6,28 +6,25 @@
   <%= f.hidden_field :role, value: params[:role] %>
   
   <div>
-    <%= f.label :name %><br />
+    <%= f.label :name <br/>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+  <% unless params[:role] == "student" %>
+    <div>
+      <%= f.label :email <br/>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+  <% end %>
 
   <div>
-    <%= f.label :password %><br />
+    <%= f.label :password <br/>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation <br/>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div>
-    <%= f.label :role %><br />
-    <%= f.select :role, User.roles.keys.map { |r| [I18n.t("activerecord.enums.user.role.#{r}"), r] } %>
   </div>
 
   <div>

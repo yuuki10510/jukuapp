@@ -6,8 +6,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do |resource|
-      resource.role = params[:user][:role]
+      resource.role = params[:role] || params.dig(:user, :role)
       resource.save
+
       if resource.student?
         StudentProfile.create(
           user: resource,
@@ -17,5 +18,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
         )
       end
     end
+  end
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 end

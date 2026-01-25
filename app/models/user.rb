@@ -1,12 +1,14 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
   enum :role, { admin: 0, parent: 1, student: 2 }
 
   validates :name, presence: true
-  validates :role, presence: true
   validates :email, presence: true, unless: :student?
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, unless: :student?, allow_blank: true
+  validates :password, length: { minimum: 8 }, if: -> { password.present? }
+  validates :password, presence: true, on: :create
 
   has_one :student_profile, dependent: :destroy
   has_many :parent_students, foreign_key: :parent_id
