@@ -1,23 +1,39 @@
 class Admin::SessionsController < Admin::BaseController
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :ensure_admin, only: [:new, :create]
 
   def new
-    self.resource = resource_class.new
+    @user = User.new
   end
 
   def create
-    self.resource = warden.authenticate(auth_options)
+    @user = User.new(email: params[:email])
 
-    if self.resource&.admin?
-      sign_in(resource_name, resource)
+    if params[:email].blank?
+      @user.errors.add(:email, "を入力してください")
+    end
+
+    if params[:password].blank?
+      @user.errors.add(:password, "を入力してください")
+    end
+
+    if @user.errors.any?
+      return render :new, status: :unprocessable_entity
+    end
+
+    user = User.find_by(email: params[:email])
+
+    if user&.valid_password?(params[:password]) && user.admin?
+      sign_in(user)
       redirect_to admin_root_path, notice: "管理者としてログインしました。"
     else
-      flash.now[:alert] = "管理者アカウントのみログインできます。"
+      @user.errors.add(:base, "メールアドレスまたはパスワードが正しくないか、管理者ではありません。")
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    sign_out(resource_name)
+    sign_out(current_user)
     redirect_to admin_login_path, notice: "ログアウトしました。"
   end
 end

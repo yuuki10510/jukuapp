@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :ensure_admin, except: [:new, :create]
 
   private
 
