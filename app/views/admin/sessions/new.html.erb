@@ -2,12 +2,12 @@
 
 <%= form_with model: resource, url: admin_login_path, local: true do |f| %>
   <div>
-    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.label :email <br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div>
-    <%= f.label :password, "パスワード" %><br />
+    <%= f.label :password <br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -15,3 +15,9 @@
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
+
+<hr>
+
+<div>
+  <%= button_to "ゲスト管理者でログイン", users_guest_admin_sign_in_path, method: :post %>
+</div>

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "users/sign_up/select_role", to: "users/registrations#select_role", as: :select_role
-
+    post "users/guest_admin_sign_in", to: "users/sessions#guest_admin_sign_in"
+    post "users/guest_parent_sign_in", to: "users/sessions#guest_parent_sign_in"
+    
     # 管理者専用ログイン
     get    "admin/login",  to: "admin/sessions#new",     as: :admin_login
     post   "admin/login",  to: "admin/sessions#create", as: :admin_login_post
