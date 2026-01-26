@@ -1,4 +1,4 @@
-class Admin::SessionsController < Admin::BaseControlle
+class Admin::SessionsController < Admin::BaseController
 
   def new
     self.resource = resource_class.new
