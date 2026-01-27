@@ -15,4 +15,12 @@ class User < ApplicationRecord
   has_many :children, through: :parent_students, source: :student
 
   has_many :scores, foreign_key: :student_id
+
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    "無効なアカウントです"
+  end
 end
