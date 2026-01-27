@@ -1,7 +1,26 @@
 <h1>生徒一覧</h1>
 
 <%= form_with url: admin_students_path, method: :get, local: true do %>
-  <%= select_tag :grade, options_for_select((1..6).map { |g| ["#{g}年", g] }, params[:grade]), include_blank: "学年選択" %>
+  <div class="field">
+    <%= label_tag :grade, "学年で絞り込み" %>
+    <%= select_tag :grade,
+      options_for_select(
+        [
+          ["小1", "小1"], ["小2", "小2"], ["小3", "小3"], ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
+          ["中1", "中1"], ["中2", "中2"], ["中3", "中3"],
+          ["高1", "高1"], ["高2", "高2"], ["高3", "高3"]
+        ],
+        params[:grade]
+      ),
+      include_blank: "すべて"
+    %>
+  </div>
+
+  <div class="field">
+    <%= check_box_tag :include_withdrawn, "1", params[:include_withdrawn].present? %>
+    <%= label_tag :include_withdrawn, "退塾者も表示する" %>
+  </div>
+
   <%= submit_tag "絞り込む" %>
 <% end %>
 
@@ -9,14 +28,19 @@
   <tr>
     <th>名前</th>
     <th>学年</th>
+    <th>状態</th>
     <th>操作</th>
   </tr>
   <% @students.each do |student| %>
     <% profile = student.student_profile %>
-    <% next unless profile&.active? %>
-    <tr>
+    <% next unless profile %>
+
+    <% next if !params[:include_withdrawn].present? && !profile.active? %>
+
+    <tr class="<%= 'withdrawn' unless profile.active? %>">
       <td><%= student.name %></td>
-      <td><%= profile.grade %>年</td>
+      <td><%= profile.grade %></td>
+      <td><%= profile.active? ? "在籍中" : "退塾済み" %></td>
       <td><%= link_to "詳細", admin_student_path(student) %></td>
     </tr>
   <% end %>
