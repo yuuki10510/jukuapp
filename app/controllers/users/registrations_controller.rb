@@ -19,6 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+  
+  def destroy
+    redirect_to root_path, alert: "この操作は許可されていません。"
+  end
 
   private
 
