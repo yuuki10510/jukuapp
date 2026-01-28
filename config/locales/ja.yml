@@ -9,6 +9,23 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         role: 役割
+      score:
+        subject:
+          math: "数学"
+          english: "英語"
+          japanese: "国語"
+          science: "理科"
+          social: "社会"
+        test_type:
+          regular: "定期テスト"
+          mock: "模試"
+        term:
+          first_mid: "1学期 中間"
+          first_end: "1学期 期末"
+          second_mid: "2学期 中間"
+          second_end: "2学期 期末"
+          third_mid: "3学期 中間"
+          year_end: "学年末"
     enums:
       user:
         role:
