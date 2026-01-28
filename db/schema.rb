@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_24_225849) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_22_152805) do
   create_table "announcements", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -29,11 +29,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_225849) do
 
   create_table "scores", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "score"
+    t.integer "score", null: false
     t.integer "student_id", null: false
-    t.string "subject"
-    t.string "term"
-    t.string "test_type"
+    t.integer "subject", null: false
+    t.integer "term", null: false
+    t.integer "test_type", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_scores_on_student_id"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_225849) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,15 +65,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_225849) do
 
   create_table "withdrawals", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "reason"
+    t.text "reason", null: false
     t.integer "student_id", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_withdrawals_on_student_id"
   end
 
-  add_foreign_key "parent_students", "parents"
-  add_foreign_key "parent_students", "students"
-  add_foreign_key "scores", "students"
+  add_foreign_key "parent_students", "users", column: "parent_id"
+  add_foreign_key "parent_students", "users", column: "student_id"
+  add_foreign_key "scores", "users", column: "student_id"
   add_foreign_key "student_profiles", "users"
-  add_foreign_key "withdrawals", "students"
+  add_foreign_key "withdrawals", "users", column: "student_id"
 end
