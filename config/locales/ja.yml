@@ -9,6 +9,12 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         role: 役割
+    enums:
+      user:
+        role:
+          admin: 管理者
+          parent: 保護者
+          student: 生徒
       score:
         subject:
           math: "数学"
@@ -26,13 +32,6 @@ ja:
           second_end: "2学期 期末"
           third_mid: "3学期 中間"
           year_end: "学年末"
-    enums:
-      user:
-        role:
-          admin: 管理者
-          parent: 保護者
-          student: 生徒
-
   errors:
     format: "%{attribute}%{message}"
     messages:

@@ -1,8 +1,11 @@
 <%= form_with model: [@student, @score], local: true do |f| %>
+
   <div>
     <%= f.label :subject %>
     <%= f.select :subject,
-      Score.subjects.keys.map { |k| [I18n.t("activerecord.attributes.score.subject.#{k}"), k] },
+      Score.subjects.keys.map { |k|
+        [I18n.t("activerecord.enums.score.subject.#{k}"), k]
+      },
       prompt: "科目を選択"
     %>
   </div>
@@ -15,7 +18,9 @@
   <div>
     <%= f.label :test_type %>
     <%= f.select :test_type,
-      Score.test_types.keys.map { |k| [I18n.t("activerecord.attributes.score.test_type.#{k}"), k] },
+      Score.test_types.keys.map { |k|
+        [I18n.t("activerecord.enums.score.test_type.#{k}"), k]
+      },
       prompt: "テスト種別を選択"
     %>
   </div>
@@ -23,10 +28,12 @@
   <div>
     <%= f.label :term %>
     <%= f.select :term,
-      Score.terms.keys.map { |k| [I18n.t("activerecord.attributes.score.term.#{k}"), k] },
+      Score.terms.keys.map { |k|
+        [I18n.t("activerecord.enums.score.term.#{k}"), k]
+      },
       prompt: "学期を選択"
     %>
   </div>
 
-  <%= f.submit "保存" %>
+  <%= f.submit %>
 <% end %>

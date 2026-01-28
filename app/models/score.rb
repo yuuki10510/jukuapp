@@ -24,4 +24,16 @@ class Score < ApplicationRecord
   }
 
   validates :subject, :score, :test_type, :term, presence: true
+
+  def subject_i18n
+    I18n.t("activerecord.enums.score.subject.#{subject}")
+  end
+
+  def test_type_i18n
+    I18n.t("activerecord.enums.score.test_type.#{test_type}")
+  end
+
+  def term_i18n
+    I18n.t("activerecord.enums.score.term.#{term}")
+  end
 end
