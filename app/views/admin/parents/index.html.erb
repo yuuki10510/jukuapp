@@ -1,0 +1,17 @@
+<h1>保護者一覧</h1>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>メール</th>
+  </tr>
+
+  <% @parents.each do |parent| %>
+    <tr>
+      <td><%= parent.name %></td>
+      <td><%= parent.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "戻る", admin_root_path %>

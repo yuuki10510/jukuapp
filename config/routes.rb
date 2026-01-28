@@ -23,11 +23,14 @@ Rails.application.routes.draw do
 
   # 管理者専用画面
   namespace :admin do
-    root "dashboard#index"
+    get "parents/index"
+    root to: "dashboard#index"
     resources :students do
       resources :scores
       resource :withdrawal, only: [:new, :create]
     end
+    
+    resources :parents, only: [:index]
     resources :announcements, only: [:index, :new, :create]
     resources :parent_students, only: [:new, :create, :destroy]
   end

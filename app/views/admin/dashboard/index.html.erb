@@ -1,2 +1,36 @@
 <h1>管理者ダッシュボード</h1>
-<p>ログインに成功しました。</p>
+
+<hr>
+
+<h2>管理メニュー</h2>
+
+<ul>
+  <li>
+    <%= link_to "生徒一覧", admin_students_path %>
+  </li>
+
+  <li>
+    <%= link_to "保護者一覧", admin_parents_path %>
+  </li>
+
+  <li>
+    <%= link_to "お知らせ管理", admin_announcements_path %>
+  </li>
+</ul>
+
+<hr>
+
+<h2>最近のお知らせ</h2>
+
+<% if @recent_announcements.any? %>
+  <ul>
+    <% @recent_announcements.each do |announcement| %>
+      <li>
+        <strong><%= announcement.title %></strong>
+        （<%= l announcement.created_at, format: :short %>）
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>お知らせはまだありません。</p>
+<% end %>
