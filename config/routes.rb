@@ -29,9 +29,9 @@ Rails.application.routes.draw do
       resources :scores
       resource :withdrawal, only: [:new, :create]
     end
-    
+
     resources :parents, only: [:index]
-    resources :announcements, only: [:index, :new, :create]
+    resources :announcements
     resources :parent_students, only: [:new, :create, :destroy]
   end
 end

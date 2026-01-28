@@ -11,8 +11,7 @@
     <tr>
       <td><%= a.title %></td>
       <td>
-        <%= link_to "編集", edit_admin_announcement_path(a) %> |
-        <%= link_to "削除", admin_announcement_path(a), method: :delete, data: { confirm: "削除しますか？" } %>
+        <%= link_to "編集", edit_admin_announcement_path(a) %> 
       </td>
     </tr>
   <% end %>
