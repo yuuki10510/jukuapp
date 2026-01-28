@@ -1,0 +1,23 @@
+<h1>プロフィール</h1>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <td><%= @user.name %></td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+
+  <tr>
+    <th>権限</th>
+    <td><%= @user.role %></td>
+  </tr>
+</table>
+
+<br>
+
+<%= link_to "編集する", edit_profile_path %>
+<%= link_to "戻る", root_path %>
