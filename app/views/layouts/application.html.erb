@@ -24,6 +24,18 @@
   </head>
 
   <body>
+    <header>
+      <h3>
+        <%= link_to "塾アプリ",
+          if user_signed_in? && current_user.admin?
+            admin_root_path
+          else
+            root_path
+          end
+        %>
+      </h3>
+    </header>
+
     <%= yield %>
   </body>
 </html>
