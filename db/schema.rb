@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_22_152805) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_28_155326) do
   create_table "announcements", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
+    t.integer "target", default: 0, null: false
     t.string "title"
     t.datetime "updated_at", null: false
   end
