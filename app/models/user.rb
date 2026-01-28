@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, parent: 1, student: 2 }
 
+  scope :students, -> { where(role: roles[:student]) }
+
   validates :name, presence: true
   validates :email, presence: true, unless: :student?
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, unless: :student?, allow_blank: true

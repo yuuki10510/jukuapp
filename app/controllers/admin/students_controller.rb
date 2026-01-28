@@ -1,8 +1,15 @@
 class Admin::StudentsController < Admin::BaseController
 
   def index
-    @students = User.student.includes(:student_profile).where(active: true)
-    @students = @students.where(student_profiles: { grade: params[:grade] }) if params[:grade].present?
+    @students = User.students.joins(:student_profile)
+
+    unless params[:include_withdrawn] == "1"
+      @students = @students.where(student_profiles: { active: true })
+    end
+
+    if params[:grade].present?
+      @students = @students.where(student_profiles: { grade: StudentProfile.grades[params[:grade]] })
+    end
   end
 
   def show
@@ -13,7 +20,7 @@ class Admin::StudentsController < Admin::BaseController
   def withdraw
     @student = User.student.find(params[:id])
 
-    if @student.update(active: false, withdrawal_reason: params[:withdrawal_reason])
+    if @student.student_profile.update(active: false, withdrawal_reason: params[:withdrawal_reason])
       redirect_to admin_students_path, notice: "退塾処理が完了しました。"
     else
       render :show

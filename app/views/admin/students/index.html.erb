@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= check_box_tag :include_withdrawn, "1", params[:include_withdrawn].present? %>
+    <%= check_box_tag :include_withdrawn, "1", params[:include_withdrawn] == "1" %>
     <%= label_tag :include_withdrawn, "退塾者も表示する" %>
   </div>
 
@@ -31,12 +31,9 @@
     <th>状態</th>
     <th>操作</th>
   </tr>
+
   <% @students.each do |student| %>
     <% profile = student.student_profile %>
-    <% next unless profile %>
-
-    <% next if !params[:include_withdrawn].present? && !profile.active? %>
-
     <tr class="<%= 'withdrawn' unless profile.active? %>">
       <td><%= student.name %></td>
       <td><%= profile.grade %></td>
