@@ -34,6 +34,10 @@ Rails.application.routes.draw do
             to: "scores#update_test",
             as: :update_test_scores
 
+      delete "scores/destroy_test",
+             to: "scores#destroy_test",
+             as: :destroy_test_scores
+             
       resource :withdrawal, only: [:new, :create]
     end
 

@@ -42,6 +42,17 @@
   <%= submit_tag "成績を更新する" %>
 <% end %>
 
+<hr>
+
+<%= button_to "このテストの成績をすべて削除",
+      admin_student_destroy_test_scores_path(@student),
+      method: :delete,
+      params: {
+        term: @term,
+        test_type: @test_type
+      },
+      data: { confirm: "このテストの成績をすべて削除します。よろしいですか？" } %>
+
 <br>
 
 <%= link_to "生徒詳細に戻る", admin_student_path(@student) %>

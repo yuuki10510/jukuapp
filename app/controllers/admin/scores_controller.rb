@@ -42,6 +42,18 @@ class Admin::ScoresController < Admin::BaseController
     render :edit_test, status: :unprocessable_entity
   end
 
+  def destroy_test
+    term = params[:term]
+    test_type = params[:test_type]
+
+    @student.scores
+            .where(term: term, test_type: test_type)
+            .destroy_all
+
+    redirect_to admin_student_path(@student),
+      notice: "テストの成績を削除しました"
+  end
+
   private
 
   def set_student
