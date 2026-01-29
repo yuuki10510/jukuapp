@@ -1,10 +1,48 @@
-<h1>成績登録</h1>
+<h1>成績入力</h1>
 
-<p>
-  生徒：<strong><%= @student.name %></strong>
-</p>
+<p>生徒：<strong><%= @student.name %></strong></p>
 
-<%= render "form" %>
+<%= form_with url: admin_student_scores_path(@student), local: true do %>
+
+  <div>
+    <%= label_tag :term, "学期" %><br>
+    <%= select_tag :term,
+          options_for_select(Score.terms_i18n.invert),
+          prompt: "学期を選択" %>
+  </div>
+
+  <div>
+    <%= label_tag :test_type, "テスト種別" %><br>
+    <%= select_tag :test_type,
+          options_for_select(Score.test_types_i18n.invert),
+          prompt: "テスト種別を選択" %>
+  </div>
+
+  <hr>
+
+  <table>
+    <tr>
+      <th>科目</th>
+      <th>点数</th>
+    </tr>
+
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></td>
+        <td>
+          <%= number_field_tag "scores[#{subject}][score]",
+                nil,
+                min: 0,
+                max: 100 %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+
+  <%= submit_tag "成績を登録する" %>
+<% end %>
 
 <br>
 

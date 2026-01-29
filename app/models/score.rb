@@ -25,15 +25,21 @@ class Score < ApplicationRecord
 
   validates :subject, :score, :test_type, :term, presence: true
 
-  def subject_i18n
-    I18n.t("activerecord.enums.score.subject.#{subject}")
+  def self.subjects_i18n
+    subjects.keys.index_with do |key|
+      I18n.t("activerecord.enums.score.subject.#{key}")
+    end
   end
 
-  def test_type_i18n
-    I18n.t("activerecord.enums.score.test_type.#{test_type}")
+  def self.test_types_i18n
+    test_types.keys.index_with do |key|
+      I18n.t("activerecord.enums.score.test_type.#{key}")
+    end
   end
 
-  def term_i18n
-    I18n.t("activerecord.enums.score.term.#{term}")
+  def self.terms_i18n
+    terms.keys.index_with do |key|
+      I18n.t("activerecord.enums.score.term.#{key}")
+    end
   end
 end

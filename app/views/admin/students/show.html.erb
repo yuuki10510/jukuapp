@@ -13,10 +13,10 @@
   </tr>
   <% @scores.each do |score| %>
     <tr>
-      <td><%= score.subject_i18n %></td>
+      <td><%= Score.human_attribute_name("subject.#{score.subject}") %></td>
       <td><%= score.score %></td>
-      <td><%= score.test_type_i18n %></td>
-      <td><%= score.term_i18n %></td>
+      <td><%= Score.human_attribute_name("test_type.#{score.test_type}") %></td>
+      <td><%= Score.human_attribute_name("term.#{score.term}") %></td>
       <td><%= link_to "編集", edit_admin_student_score_path(@student, score) %></td>
     </tr>
   <% end %>
