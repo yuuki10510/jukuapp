@@ -4,6 +4,10 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, parent: 1, student: 2 }
 
+  scope :students, -> { where(role: roles[:student]) }
+  scope :parents,  -> { where(role: roles[:parent]) }
+  scope :admins,   -> { where(role: roles[:admin]) }
+  
   # === バリデーション ===
   validates :name, presence: true
   validates :email, presence: true, unless: :student?
@@ -17,16 +21,16 @@ class User < ApplicationRecord
   # === 生徒プロフィール ===
   has_one :student_profile, dependent: :destroy
 
-  # === 保護者 → 生徒（関連の本体）===
+  # === 保護者 → 生徒 ===
   has_many :parent_students,
            foreign_key: :parent_id,
            dependent: :destroy
 
-  has_many :students,
+  has_many :children,
            through: :parent_students,
            source: :student
 
-  # === 生徒 → 保護者（逆関連）===
+  # === 生徒 → 保護者 ===
   has_many :reverse_parent_students,
            class_name: "ParentStudent",
            foreign_key: :student_id,
@@ -40,9 +44,6 @@ class User < ApplicationRecord
   has_many :scores,
            foreign_key: :student_id,
            dependent: :destroy
-
-  # === 管理者用スコープ（名前を変える）===
-  scope :only_students, -> { where(role: roles[:student]) }
 
   # === Devise: 有効／無効制御 ===
   def active_for_authentication?

@@ -1,7 +1,7 @@
 class Admin::StudentsController < Admin::BaseController
 
   def index
-    @students = User.students.joins(:student_profile)
+    @students = User.student.joins(:student_profile)
 
     unless params[:include_withdrawn] == "1"
       @students = @students.where(student_profiles: { active: true })
@@ -14,7 +14,19 @@ class Admin::StudentsController < Admin::BaseController
 
   def show
     @student = User.student.find(params[:id])
-    @scores = @student.scores
+    @scores  = @student.scores
+
+    totals = Score.total_scores_by_test(@scores)
+
+    @line_chart_data = {}
+
+    Score::TEST_ORDER.each do |term, test_type|
+      label =
+        "#{I18n.t("activerecord.enums.score.term.#{term}")}"
+
+      @line_chart_data[label] =
+        totals[[term.to_s, test_type.to_s]] || 0
+    end
   end
 
   def withdraw

@@ -30,6 +30,16 @@ class Score < ApplicationRecord
       message: "はすでに登録されています"
     }
 
+  # テスト表示順
+  TEST_ORDER = [
+    [:first_mid,  :regular],
+    [:first_end,  :regular],
+    [:second_mid, :regular],
+    [:second_end, :regular],
+    [:third_mid,  :regular],
+    [:year_end,   :regular]
+  ].freeze
+
   def self.subjects_i18n
     subjects.keys.index_with do |key|
       I18n.t("activerecord.enums.score.subject.#{key}")
@@ -59,5 +69,12 @@ class Score < ApplicationRecord
 
   def term_i18n
     I18n.t("activerecord.enums.score.term.#{term}")
+  end
+
+  # テスト単位（term + test_type）で合計点を返す
+  def self.total_scores_by_test(scores)
+    scores
+      .group_by { |s| [s.term, s.test_type] }
+      .transform_values { |scores| scores.sum(&:score) }
   end
 end

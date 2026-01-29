@@ -45,3 +45,29 @@
     </tr>
   <% end %>
 </table>
+
+<hr>
+
+<h3>成績推移（合計点）</h3>
+
+<h4>棒グラフ（テスト別 合計点）</h4>
+
+<%= bar_chart @line_chart_data,
+      xtitle: "テスト",
+      ytitle: "合計点",
+      min: 0,
+      max: 500,
+      height: "400px" %>
+
+<hr>
+
+<h4>折れ線グラフ（推移）</h4>
+
+<%= line_chart @line_chart_data,
+      xtitle: "テスト",
+      ytitle: "合計点",
+      min: 0,
+      max: 500,
+      curve: false,
+      height: "400px" %>
+      
