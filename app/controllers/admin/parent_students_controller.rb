@@ -1,6 +1,6 @@
 class Admin::ParentStudentsController < Admin::BaseController
   def new
-    @parents = User.parent
+    @parent = User.parent.find(params[:parent_id])
     @students = User.student
   end
 
@@ -9,11 +9,12 @@ class Admin::ParentStudentsController < Admin::BaseController
       parent_id: params[:parent_id],
       student_id: params[:student_id]
     )
-    redirect_to admin_students_path, notice: "紐付けが完了しました"
+
+    redirect_to admin_parents_path, notice: "生徒を紐付けました"
   end
 
   def destroy
     ParentStudent.find(params[:id]).destroy
-    redirect_to admin_students_path, notice: "紐付けを解除しました"
+    redirect_to admin_parents_path, notice: "紐付けを解除しました"
   end
 end

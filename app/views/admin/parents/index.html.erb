@@ -1,17 +1,33 @@
 <h1>保護者一覧</h1>
 
-<table>
+<table border="1" cellpadding="6">
   <tr>
     <th>名前</th>
     <th>メール</th>
+    <th>紐付いている生徒</th>
+    <th>操作</th>
   </tr>
 
   <% @parents.each do |parent| %>
     <tr>
       <td><%= parent.name %></td>
       <td><%= parent.email %></td>
+      <td>
+        <% if parent.children.any? %>
+          <%= parent.children.map(&:name).join("、") %>
+        <% else %>
+          なし
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "生徒を紐付ける",
+              new_admin_parent_parent_student_path(parent) %>
+      </td>
     </tr>
   <% end %>
 </table>
+
+
+<br>
 
 <%= link_to "戻る", admin_root_path %>

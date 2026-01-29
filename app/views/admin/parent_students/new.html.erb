@@ -1,2 +1,27 @@
-<h1>Admin::ParentStudents#new</h1>
-<p>Find me in app/views/admin/parent_students/new.html.erb</p>
+<h1>生徒紐付け</h1>
+
+<p>
+  保護者：<strong><%= @parent.name %></strong>
+</p>
+
+<%= form_with(
+      url: admin_parent_parent_students_path(@parent),
+      local: true
+    ) do %>
+
+  <div>
+    <%= label_tag :student_id, "生徒を選択" %><br>
+    <%= select_tag :student_id,
+          options_from_collection_for_select(@students, :id, :name),
+          prompt: "生徒を選択" %>
+  </div>
+
+
+  <br>
+
+  <%= submit_tag "紐付ける" %>
+<% end %>
+
+<br>
+
+<%= link_to "保護者一覧へ戻る", admin_parents_path %>
