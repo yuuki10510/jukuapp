@@ -1,2 +1,18 @@
-<h1>Admin::Scores#edit</h1>
-<p>Find me in app/views/admin/scores/edit.html.erb</p>
+<h1>成績編集</h1>
+
+<p>
+  生徒：<strong><%= @student.name %></strong>
+</p>
+
+<%= render "form" %>
+
+<hr>
+
+<%= button_to "この成績を削除",
+      admin_student_score_path(@student, @score),
+      method: :delete,
+      data: { confirm: "削除しますか？" } %>
+
+<br>
+
+<%= link_to "生徒詳細に戻る", admin_student_path(@student) %>

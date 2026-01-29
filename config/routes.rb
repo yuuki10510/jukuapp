@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   # 管理者専用画面
   namespace :admin do
-    get "parents/index"
     root to: "dashboard#index"
     resources :students do
       resources :scores

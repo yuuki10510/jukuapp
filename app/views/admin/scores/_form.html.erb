@@ -1,4 +1,10 @@
-<%= form_with model: [@student, @score], local: true do |f| %>
+<%= form_with(
+      url: @score.persisted? ?
+        admin_student_score_path(@student, @score) :
+        admin_student_scores_path(@student),
+      method: @score.persisted? ? :patch : :post,
+      local: true
+    ) do |f| %>
 
   <div>
     <%= f.label :subject %>

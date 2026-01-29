@@ -1,2 +1,11 @@
-<h1>Admin::Scores#new</h1>
-<p>Find me in app/views/admin/scores/new.html.erb</p>
+<h1>成績登録</h1>
+
+<p>
+  生徒：<strong><%= @student.name %></strong>
+</p>
+
+<%= render "form" %>
+
+<br>
+
+<%= link_to "生徒詳細に戻る", admin_student_path(@student) %>
