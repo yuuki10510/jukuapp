@@ -7,15 +7,17 @@
   <div>
     <%= label_tag :term, "学期" %><br>
     <%= select_tag :term,
-          options_for_select(Score.terms_i18n.invert),
-          prompt: "学期を選択" %>
+          options_for_select(Score.terms_i18n.invert, params[:term]),
+          prompt: "学期を選択",
+          required: true %>
   </div>
 
   <div>
     <%= label_tag :test_type, "テスト種別" %><br>
     <%= select_tag :test_type,
-          options_for_select(Score.test_types_i18n.invert),
-          prompt: "テスト種別を選択" %>
+          options_for_select(Score.test_types_i18n.invert, params[:test_type]),
+          prompt: "テスト種別を選択",
+          required: true %>
   </div>
 
   <hr>
@@ -41,7 +43,7 @@
 
   <br>
 
-  <%= submit_tag "成績を登録する" %>
+  <%= submit_tag "成績を保存する" %>
 <% end %>
 
 <br>

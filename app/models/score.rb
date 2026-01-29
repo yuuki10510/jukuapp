@@ -24,7 +24,12 @@ class Score < ApplicationRecord
   }
 
   validates :subject, :score, :test_type, :term, presence: true
-
+  validates :subject,
+    uniqueness: {
+      scope: [:student_id, :term, :test_type],
+      message: "はすでに登録されています"
+    }
+    
   def self.subjects_i18n
     subjects.keys.index_with do |key|
       I18n.t("activerecord.enums.score.subject.#{key}")

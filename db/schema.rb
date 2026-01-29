@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_28_171253) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_29_125749) do
   create_table "announcements", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_28_171253) do
     t.integer "term", null: false
     t.integer "test_type", null: false
     t.datetime "updated_at", null: false
+    t.index ["student_id", "subject", "term", "test_type"], name: "index_scores_unique_per_test", unique: true
     t.index ["student_id"], name: "index_scores_on_student_id"
   end
 
