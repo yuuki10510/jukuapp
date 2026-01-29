@@ -1,2 +1,19 @@
-<h1>Announcements#index</h1>
-<p>Find me in app/views/announcements/index.html.erb</p>
+<h1>お知らせ一覧</h1>
+
+<% if @announcements.any? %>
+  <ul>
+    <% @announcements.each do |announcement| %>
+      <li>
+        <strong>
+          <%= link_to announcement.title, announcement_path(announcement) %>
+        </strong>
+        <br>
+        <small>
+          <%= l announcement.created_at, format: :short %>
+        </small>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>現在、お知らせはありません。</p>
+<% end %>

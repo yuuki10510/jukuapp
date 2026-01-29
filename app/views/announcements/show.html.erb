@@ -1,2 +1,9 @@
-<h1>Announcements#show</h1>
-<p>Find me in app/views/announcements/show.html.erb</p>
+<h1><%= @announcement.title %></h1>
+
+<p>
+  <%= simple_format(@announcement.body) %>
+</p>
+
+<hr>
+
+<%= link_to "お知らせ一覧に戻る", announcements_path %>
