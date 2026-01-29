@@ -51,6 +51,7 @@ Rails.application.routes.draw do
              to: "scores#destroy_test",
              as: :destroy_test_scores
 
+      resources :scores, only: [:new, :create]
       resource :withdrawal, only: [:new, :create]
     end
 

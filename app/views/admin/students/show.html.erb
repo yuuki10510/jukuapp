@@ -1,5 +1,11 @@
 <h3>成績一覧</h3>
 
+<p>
+  <%= link_to "成績入力",
+        new_admin_student_score_path(@student),
+        class: "btn" %>
+</p>
+
 <% subjects = Score.subjects.keys %>
 
 <% grouped_scores =
