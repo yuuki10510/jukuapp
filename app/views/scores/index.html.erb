@@ -1,33 +1,35 @@
 <h1>成績一覧</h1>
 
-<% subjects = Score.subjects.keys %>
+<% @students.each do |student| %>
+  <h2><%= student.name %></h2>
 
-<% grouped_scores =
-     @scores.group_by { |s| [s.term, s.test_type] } %>
+  <% scores = student.scores %>
 
-<table border="1" cellpadding="6">
-  <tr>
-    <th>学期 / 教科</th>
-    <% subjects.each do |subject| %>
-      <th>
-        <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
-      </th>
-    <% end %>
-  </tr>
+  <% subjects = Score.subjects.keys %>
+  <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
 
-  <% grouped_scores.each do |(term, test_type), scores| %>
+  <table border="1" cellpadding="6">
     <tr>
-      <td>
-        <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
-        （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
-      </td>
-
+      <th>学期 / 教科</th>
       <% subjects.each do |subject| %>
-        <% score = scores.find { |s| s.subject == subject } %>
-        <td>
-          <%= score ? score.score : "–" %>
-        </td>
+        <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
       <% end %>
     </tr>
-  <% end %>
-</table>
+
+    <% grouped_scores.each do |(term, test_type), scores| %>
+      <tr>
+        <td>
+          <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
+          （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
+        </td>
+
+        <% subjects.each do |subject| %>
+          <% score = scores.find { |s| s.subject == subject } %>
+          <td><%= score&.score || "–" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+<% end %>

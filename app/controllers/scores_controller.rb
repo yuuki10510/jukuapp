@@ -3,9 +3,16 @@ class ScoresController < ApplicationController
 
   def index
     if current_user.student?
-      @scores = current_user.scores
+      # 生徒本人
+      @students = [current_user]
+
     elsif current_user.parent?
-      @scores = Score.where(student_id: current_user.children.pluck(:id))
+      # 保護者 → 紐付いた生徒一覧
+      @students = current_user.students
+
+    else
+      # 管理者はここには来ない想定
+      redirect_to root_path, alert: "アクセス権限がありません"
     end
   end
 end
