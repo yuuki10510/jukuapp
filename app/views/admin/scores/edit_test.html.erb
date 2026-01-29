@@ -1,0 +1,47 @@
+<h1>成績編集</h1>
+
+<p>
+  生徒：<strong><%= @student.name %></strong><br>
+  学期：<strong><%= I18n.t("activerecord.enums.score.term.#{@term}") %></strong><br>
+  テスト：<strong><%= I18n.t("activerecord.enums.score.test_type.#{@test_type}") %></strong>
+</p>
+
+<%= form_with(
+      url: admin_student_update_test_scores_path(@student),
+      method: :patch,
+      local: true
+    ) do %>
+
+  <%= hidden_field_tag :term, @term %>
+  <%= hidden_field_tag :test_type, @test_type %>
+
+  <table>
+    <tr>
+      <th>教科</th>
+      <th>点数</th>
+    </tr>
+
+    <% @subjects.each do |subject| %>
+      <% score = @scores_by_subject[subject] %>
+      <tr>
+        <td>
+          <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+        </td>
+        <td>
+          <%= number_field_tag "scores[#{subject}][score]",
+                score&.score,
+                min: 0,
+                max: 100 %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+
+  <%= submit_tag "成績を更新する" %>
+<% end %>
+
+<br>
+
+<%= link_to "生徒詳細に戻る", admin_student_path(@student) %>

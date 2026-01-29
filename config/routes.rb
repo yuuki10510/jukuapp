@@ -24,8 +24,16 @@ Rails.application.routes.draw do
   # 管理者専用画面
   namespace :admin do
     root to: "dashboard#index"
+
     resources :students do
-      resources :scores
+      get  "scores/edit_test",
+           to: "scores#edit_test",
+           as: :edit_test_scores
+
+      patch "scores/update_test",
+            to: "scores#update_test",
+            as: :update_test_scores
+
       resource :withdrawal, only: [:new, :create]
     end
 

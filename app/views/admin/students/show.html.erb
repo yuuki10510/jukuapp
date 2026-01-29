@@ -11,6 +11,7 @@
     <% subjects.each do |subject| %>
       <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
     <% end %>
+    <th>操作</th>
   </tr>
 
   <% grouped_scores.each do |(term, test_type), scores| %>
@@ -26,6 +27,15 @@
           <%= score ? score.score : "–" %>
         </td>
       <% end %>
+
+      <td>
+        <%= link_to "編集",
+              admin_student_edit_test_scores_path(
+                @student,
+                term: term,
+                test_type: test_type
+              ) %>
+      </td>
     </tr>
   <% end %>
 </table>

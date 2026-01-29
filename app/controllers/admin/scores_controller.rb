@@ -1,19 +1,20 @@
 class Admin::ScoresController < Admin::BaseController
   before_action :set_student
 
-  def new
+  def edit_test
+    @term = params[:term]
+    @test_type = params[:test_type]
     @subjects = Score.subjects.keys
+
+    @scores_by_subject =
+      @student.scores
+              .where(term: @term, test_type: @test_type)
+              .index_by(&:subject)
   end
 
-  def create
+  def update_test
     term = params[:term]
     test_type = params[:test_type]
-
-    if term.blank? || test_type.blank?
-      @subjects = Score.subjects.keys
-      flash.now[:alert] = "学期とテスト種別を選択してください"
-      return render :new, status: :unprocessable_entity
-    end
 
     ActiveRecord::Base.transaction do
       params[:scores].each do |subject, attrs|
@@ -30,11 +31,15 @@ class Admin::ScoresController < Admin::BaseController
       end
     end
 
-    redirect_to admin_student_path(@student), notice: "成績を保存しました"
-  rescue ActiveRecord::RecordInvalid => e
+    redirect_to admin_student_path(@student),
+      notice: "成績を更新しました"
+  rescue ActiveRecord::RecordInvalid
+    @term = term
+    @test_type = test_type
     @subjects = Score.subjects.keys
+    @scores_by_subject = {}
     flash.now[:alert] = "入力内容に誤りがあります"
-    render :new, status: :unprocessable_entity
+    render :edit_test, status: :unprocessable_entity
   end
 
   private
