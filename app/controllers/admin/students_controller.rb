@@ -18,15 +18,7 @@ class Admin::StudentsController < Admin::BaseController
 
     totals = Score.total_scores_by_test(@scores)
 
-    @line_chart_data = {}
-
-    Score::TEST_ORDER.each do |term, test_type|
-      label =
-        "#{I18n.t("activerecord.enums.score.term.#{term}")}"
-
-      @line_chart_data[label] =
-        totals[[term.to_s, test_type.to_s]] || 0
-    end
+    @line_chart_data = Score.build_line_chart_data(@scores)
   end
 
   def withdraw

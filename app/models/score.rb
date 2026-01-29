@@ -74,7 +74,22 @@ class Score < ApplicationRecord
   # テスト単位（term + test_type）で合計点を返す
   def self.total_scores_by_test(scores)
     scores
-      .group_by { |s| [s.term, s.test_type] }
-      .transform_values { |scores| scores.sum(&:score) }
+     .group(:term, :test_type)
+     .sum(:score)
+     .transform_keys { |k| [k[0].to_s, k[1].to_s] }
+  end
+  
+  def self.build_line_chart_data(scores)
+    totals = total_scores_by_test(scores)
+
+    data = {}
+
+    TEST_ORDER.each do |term, test_type|
+      label = I18n.t("activerecord.enums.score.term.#{term}")
+
+      data[label] = totals[[term.to_s, test_type.to_s]] || 0
+    end
+
+    data
   end
 end
