@@ -1,32 +1,31 @@
-<h2><%= @student.name %>さん</h2>
-
-<%= link_to "成績追加", new_admin_student_score_path(@student) %>
-
 <h3>成績一覧</h3>
 
-<table>
+<% subjects = Score.subjects.keys %>
+
+<% grouped_scores =
+     @scores.group_by { |s| [s.term, s.test_type] } %>
+
+<table border="1" cellpadding="6">
   <tr>
-    <th>教科</th>
-    <th>点数</th>
-    <th>テスト</th>
-    <th>学期</th>
-    <th></th>
+    <th>学期 / 教科</th>
+    <% subjects.each do |subject| %>
+      <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
+    <% end %>
   </tr>
 
-  <% @scores.each do |score| %>
+  <% grouped_scores.each do |(term, test_type), scores| %>
     <tr>
-      <td><%= score.subject_i18n %></td>
-      <td><%= score.score %></td>
-      <td><%= score.test_type_i18n %></td>
-      <td><%= score.term_i18n %></td>
       <td>
-        <%= link_to "編集", edit_admin_student_score_path(@student, score) %>
+        <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
+        （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
       </td>
+
+      <% subjects.each do |subject| %>
+        <% score = scores.find { |s| s.subject == subject } %>
+        <td>
+          <%= score ? score.score : "–" %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
-
-<h3>成績グラフ</h3>
-
-<%= line_chart @scores.group(:term).average(:score) %>
-<%= bar_chart @scores.group(:subject).average(:score) %>
