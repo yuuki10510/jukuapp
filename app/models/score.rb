@@ -29,7 +29,7 @@ class Score < ApplicationRecord
       scope: [:student_id, :term, :test_type],
       message: "はすでに登録されています"
     }
-    
+
   def self.subjects_i18n
     subjects.keys.index_with do |key|
       I18n.t("activerecord.enums.score.subject.#{key}")
@@ -46,5 +46,18 @@ class Score < ApplicationRecord
     terms.keys.index_with do |key|
       I18n.t("activerecord.enums.score.term.#{key}")
     end
+  end
+
+  # ===== 一覧表示用（インスタンスメソッド） =====
+  def subject_i18n
+    I18n.t("activerecord.enums.score.subject.#{subject}")
+  end
+
+  def test_type_i18n
+    I18n.t("activerecord.enums.score.test_type.#{test_type}")
+  end
+
+  def term_i18n
+    I18n.t("activerecord.enums.score.term.#{term}")
   end
 end

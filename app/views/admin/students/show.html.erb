@@ -3,6 +3,7 @@
 <%= link_to "成績追加", new_admin_student_score_path(@student) %>
 
 <h3>成績一覧</h3>
+
 <table>
   <tr>
     <th>教科</th>
@@ -11,17 +12,21 @@
     <th>学期</th>
     <th></th>
   </tr>
+
   <% @scores.each do |score| %>
     <tr>
-      <td><%= Score.human_attribute_name("subject.#{score.subject}") %></td>
+      <td><%= score.subject_i18n %></td>
       <td><%= score.score %></td>
-      <td><%= Score.human_attribute_name("test_type.#{score.test_type}") %></td>
-      <td><%= Score.human_attribute_name("term.#{score.term}") %></td>
-      <td><%= link_to "編集", edit_admin_student_score_path(@student, score) %></td>
+      <td><%= score.test_type_i18n %></td>
+      <td><%= score.term_i18n %></td>
+      <td>
+        <%= link_to "編集", edit_admin_student_score_path(@student, score) %>
+      </td>
     </tr>
   <% end %>
 </table>
 
 <h3>成績グラフ</h3>
+
 <%= line_chart @scores.group(:term).average(:score) %>
 <%= bar_chart @scores.group(:subject).average(:score) %>
