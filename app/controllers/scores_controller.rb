@@ -8,10 +8,10 @@ class ScoresController < ApplicationController
 
     elsif current_user.parent?
       # 保護者 → 紐付いた生徒一覧
-      @students = current_user.students
+      @students = current_user.children
 
     else
-      # 管理者はここには来ない想定
+      # 管理者はこの画面には来ない想定
       redirect_to root_path, alert: "アクセス権限がありません"
     end
   end

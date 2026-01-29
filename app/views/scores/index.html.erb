@@ -4,32 +4,35 @@
   <h2><%= student.name %></h2>
 
   <% scores = student.scores %>
-
   <% subjects = Score.subjects.keys %>
   <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
 
-  <table border="1" cellpadding="6">
-    <tr>
-      <th>学期 / 教科</th>
-      <% subjects.each do |subject| %>
-        <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
-      <% end %>
-    </tr>
-
-    <% grouped_scores.each do |(term, test_type), scores| %>
+  <% if grouped_scores.any? %>
+    <table border="1" cellpadding="6">
       <tr>
-        <td>
-          <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
-          （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
-        </td>
-
+        <th>学期 / 教科</th>
         <% subjects.each do |subject| %>
-          <% score = scores.find { |s| s.subject == subject } %>
-          <td><%= score&.score || "–" %></td>
+          <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
         <% end %>
       </tr>
-    <% end %>
-  </table>
 
-  <br>
+      <% grouped_scores.each do |(term, test_type), list| %>
+        <tr>
+          <td>
+            <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
+            （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
+          </td>
+
+          <% subjects.each do |subject| %>
+            <% score = list.find { |s| s.subject == subject } %>
+            <td><%= score&.score || "–" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>まだ成績が登録されていません。</p>
+  <% end %>
+
+  <hr>
 <% end %>
