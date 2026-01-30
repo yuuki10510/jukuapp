@@ -1,33 +1,37 @@
-<h1>保護者一覧</h1>
+<h1 class="parents-title">保護者一覧</h1>
 
-<table border="1" cellpadding="6">
-  <tr>
-    <th>名前</th>
-    <th>メール</th>
-    <th>紐付いている生徒</th>
-    <th>操作</th>
-  </tr>
-
-  <% @parents.each do |parent| %>
+<table class="parents-table">
+  <thead>
     <tr>
-      <td><%= parent.name %></td>
-      <td><%= parent.email %></td>
-      <td>
-        <% if parent.children.any? %>
-          <%= parent.children.map(&:name).join("、") %>
-        <% else %>
-          なし
-        <% end %>
-      </td>
-      <td>
-        <%= link_to "生徒を紐付ける",
-              new_admin_parent_parent_student_path(parent) %>
-      </td>
+      <th class="parents-th">名前</th>
+      <th class="parents-th">メール</th>
+      <th class="parents-th">紐付いている生徒</th>
+      <th class="parents-th parents-th-action">操作</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @parents.each do |parent| %>
+      <tr class="parents-row">
+        <td class="parents-name"><%= parent.name %></td>
+        <td class="parents-email"><%= parent.email %></td>
+        <td class="parents-children">
+          <% if parent.children.any? %>
+            <%= parent.children.map(&:name).join("、") %>
+          <% else %>
+            <span class="parents-none">なし</span>
+          <% end %>
+        </td>
+        <td class="parents-action">
+          <%= link_to "生徒を紐付ける",
+                new_admin_parent_parent_student_path(parent),
+                class: "parents-link" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-
-<br>
-
-<%= link_to "戻る", admin_root_path %>
+<div class="parents-back">
+  <%= link_to "← ダッシュボードに戻る", admin_root_path %>
+</div>
