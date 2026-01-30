@@ -1,0 +1,151 @@
+/* ===== 成績一覧 共通 ===== */
+
+.scores-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scores-actions {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.btn.btn-primary {
+  padding: 0.6rem 1.2rem;
+  background: #4f46e5;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn.btn-primary:hover {
+  background: #4338ca;
+}
+
+/* ===== テーブル ===== */
+
+.scores-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.scores-th {
+  background: #f9fafb;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.scores-th.term {
+  text-align: left;
+  width: 18%;
+}
+
+.scores-th.action {
+  width: 10%;
+  text-align: right;
+}
+
+.scores-row:hover {
+  background: #f8fafc;
+}
+
+/* ===== 左端（学期） ===== */
+
+.scores-term {
+  padding: 0.75rem;
+}
+
+.term-label {
+  font-weight: 600;
+}
+
+.test-type {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ===== 点数セル ===== */
+
+.scores-cell {
+  text-align: center;
+  padding: 0.75rem;
+}
+
+.score-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* 点数あり */
+.score-value.has-score {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+/* 点数なし */
+.score-value.no-score {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* ===== 操作列 ===== */
+
+.scores-action {
+  text-align: right;
+  padding: 0.75rem;
+}
+
+.edit-link {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.edit-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== 区切り線 ===== */
+
+.scores-divider {
+  margin: 3rem 0 2rem;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ===== グラフ ===== */
+
+.chart-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.chart-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+}
+
+.chart-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}

@@ -1,9 +1,9 @@
-<h3>成績一覧</h3>
+<h3 class="scores-title">成績一覧</h3>
 
-<p>
+<p class="scores-actions">
   <%= link_to "成績入力",
         new_admin_student_score_path(@student),
-        class: "btn" %>
+        class: "btn btn-primary" %>
 </p>
 
 <% subjects = Score.subjects.keys %>
@@ -11,63 +11,79 @@
 <% grouped_scores =
      @scores.group_by { |s| [s.term, s.test_type] } %>
 
-<table border="1" cellpadding="6">
-  <tr>
-    <th>学期 / 教科</th>
-    <% subjects.each do |subject| %>
-      <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
-    <% end %>
-    <th>操作</th>
-  </tr>
-
-  <% grouped_scores.each do |(term, test_type), scores| %>
+<table class="scores-table" border="1" cellpadding="6">
+  <thead>
     <tr>
-      <td>
-        <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
-        （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
-      </td>
-
+      <th class="scores-th term">学期 / 教科</th>
       <% subjects.each do |subject| %>
-        <% score = scores.find { |s| s.subject == subject } %>
-        <td>
-          <%= score ? score.score : "–" %>
-        </td>
+        <th class="scores-th subject">
+          <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+        </th>
       <% end %>
-
-      <td>
-        <%= link_to "編集",
-              admin_student_edit_test_scores_path(
-                @student,
-                term: term,
-                test_type: test_type
-              ) %>
-      </td>
+      <th class="scores-th action">操作</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% grouped_scores.each do |(term, test_type), scores| %>
+      <tr class="scores-row">
+        <td class="scores-term">
+          <span class="term-label">
+            <%= I18n.t("activerecord.enums.score.term.#{term}") %>
+          </span><br>
+          <span class="test-type">
+            （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
+          </span>
+        </td>
+
+        <% subjects.each do |subject| %>
+          <% score = scores.find { |s| s.subject == subject } %>
+          <td class="scores-cell">
+            <span class="score-value <%= score ? 'has-score' : 'no-score' %>">
+              <%= score ? score.score : "–" %>
+            </span>
+          </td>
+        <% end %>
+
+        <td class="scores-action">
+          <%= link_to "編集",
+                admin_student_edit_test_scores_path(
+                  @student,
+                  term: term,
+                  test_type: test_type
+                ),
+                class: "edit-link" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<hr>
+<hr class="scores-divider">
 
-<h3>成績推移（合計点）</h3>
+<h3 class="chart-title">成績推移（合計点）</h3>
 
-<h4>棒グラフ（テスト別 合計点）</h4>
+<h4 class="chart-subtitle">棒グラフ（テスト別 合計点）</h4>
 
-<%= bar_chart @line_chart_data,
-      xtitle: "テスト",
-      ytitle: "合計点",
-      min: 0,
-      max: 500,
-      height: "400px" %>
+<div class="chart-wrapper bar-chart">
+  <%= bar_chart @line_chart_data,
+        xtitle: "テスト",
+        ytitle: "合計点",
+        min: 0,
+        max: 500,
+        height: "400px" %>
+</div>
 
-<hr>
+<hr class="scores-divider">
 
-<h4>折れ線グラフ（推移）</h4>
+<h4 class="chart-subtitle">折れ線グラフ（推移）</h4>
 
-<%= line_chart @line_chart_data,
-      xtitle: "テスト",
-      ytitle: "合計点",
-      min: 0,
-      max: 500,
-      curve: false,
-      height: "400px" %>
-      
+<div class="chart-wrapper line-chart">
+  <%= line_chart @line_chart_data,
+        xtitle: "テスト",
+        ytitle: "合計点",
+        min: 0,
+        max: 500,
+        curve: false,
+        height: "400px" %>
+</div>
