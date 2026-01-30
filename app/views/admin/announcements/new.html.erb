@@ -1,34 +1,38 @@
-<h1>お知らせ新規作成</h1>
+<h1 class="page-title">お知らせ新規作成</h1>
 
 <%= form_with model: @announcement,
               url: admin_announcements_path,
-              local: true do |f| %>
+              local: true,
+              class: "form-card" do |f| %>
 
-  <div>
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, "タイトル", class: "form-label" %>
+    <%= f.text_field :title, class: "form-input", placeholder: "例：夏期講習のお知らせ" %>
   </div>
 
-  <div>
-    <%= f.label :body, "本文" %><br>
-    <%= f.text_area :body, rows: 6 %>
+  <div class="form-group">
+    <%= f.label :body, "本文", class: "form-label" %>
+    <%= f.text_area :body, rows: 6, class: "form-textarea", placeholder: "配信内容を入力してください…" %>
   </div>
 
-  <div>
-    <%= f.label :target, "配信対象" %><br>
+  <div class="form-group">
+    <%= f.label :target, "配信対象", class: "form-label" %>
     <%= f.select :target,
           [
             ["全員", "everyone"],
             ["保護者のみ", "parent"],
             ["生徒のみ", "student"]
-          ] %>
+          ],
+          {},
+          class: "form-select" %>
   </div>
 
-  <br>
+  <div class="form-actions">
+    <%= f.submit "作成する", class: "btn-primary" %>
+  </div>
 
-  <%= f.submit "作成する" %>
 <% end %>
 
-<br>
-
-<%= link_to "戻る", admin_announcements_path %>
+<div class="back-link">
+  <%= link_to "戻る", admin_announcements_path %>
+</div>
