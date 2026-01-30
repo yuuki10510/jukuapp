@@ -1,27 +1,42 @@
-<h1>生徒紐付け</h1>
+<div class="link-student-page">
 
-<p>
-  保護者：<strong><%= @parent.name %></strong>
-</p>
+  <h1 class="page-title">生徒紐付け</h1>
+  <p class="page-description">
+    保護者のアカウントに生徒を連携します
+  </p>
 
-<%= form_with(
-      url: admin_parent_parent_students_path(@parent),
-      local: true
-    ) do %>
+  <div class="card">
 
-  <div>
-    <%= label_tag :student_id, "生徒を選択" %><br>
-    <%= select_tag :student_id,
-          options_from_collection_for_select(@students, :id, :name),
-          prompt: "生徒を選択" %>
+    <div class="parent-info">
+      <div class="parent-icon">👤</div>
+      <div>
+        <p class="parent-label">対象の保護者</p>
+        <p class="parent-name">
+          <%= @parent.name %><span> 様</span>
+        </p>
+      </div>
+    </div>
+
+    <%= form_with(
+          url: admin_parent_parent_students_path(@parent),
+          local: true,
+          class: "link-form"
+        ) do %>
+
+      <div class="form-group">
+        <%= label_tag :student_id, "生徒を選択", class: "form-label" %>
+        <%= select_tag :student_id,
+              options_from_collection_for_select(@students, :id, :name),
+              prompt: "生徒を選択してください",
+              class: "form-select" %>
+      </div>
+
+      <%= submit_tag "紐付ける", class: "submit-button" %>
+    <% end %>
   </div>
 
+  <div class="back-link">
+    <%= link_to "保護者一覧へ戻る", admin_parents_path %>
+  </div>
 
-  <br>
-
-  <%= submit_tag "紐付ける" %>
-<% end %>
-
-<br>
-
-<%= link_to "保護者一覧へ戻る", admin_parents_path %>
+</div>
