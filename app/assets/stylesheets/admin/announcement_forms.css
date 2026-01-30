@@ -87,3 +87,59 @@
 .back-link a:hover {
   color: #3b82f6;
 }
+
+/* ===== 区切り線 ===== */
+.form-divider {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ===== 危険操作ゾーン ===== */
+.danger-zone {
+  margin-bottom: 32px;
+}
+
+.danger-text {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* ===== 削除ボタン ===== */
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #fca5a5;
+  background: #ffffff;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #fef2f2;
+}
+
+/* ===== アクション（縦並び） ===== */
+.form-actions-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 更新ボタンと同じ右寄せ */
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* 注意文も右寄せ */
+.form-actions-stack .danger-text {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* 削除ボタンは更新より少し控えめに */
+.btn-danger {
+  padding: 10px 22px;
+}
