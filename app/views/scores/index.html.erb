@@ -1,63 +1,94 @@
-<h1>成績一覧</h1>
+<h1 class="scores-title">成績一覧</h1>
 
 <% @students.each do |student| %>
-  <h2><%= student.name %></h2>
+  <section class="scores-section">
 
-  <% scores = student.scores %>
-  <% subjects = Score.subjects.keys %>
-  <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
+    <!-- 生徒情報 -->
+    <div class="student-meta">
+      <span class="meta-label">生徒氏名:</span>
+      <span class="meta-value"><%= student.name %></span>
+    </div>
 
-  <% if grouped_scores.any? %>
-    <table border="1" cellpadding="6">
-      <tr>
-        <th>学期 / 教科</th>
-        <% subjects.each do |subject| %>
-          <th><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></th>
-        <% end %>
-      </tr>
+    <% scores = student.scores %>
+    <% subjects = Score.subjects.keys %>
+    <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
 
-      <% grouped_scores.each do |(term, test_type), list| %>
-        <tr>
-          <td>
-            <%= I18n.t("activerecord.enums.score.term.#{term}") %><br>
-            （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
-          </td>
+    <% if grouped_scores.any? %>
+      <div class="scores-table-card">
+        <div class="scores-table-wrapper">
+          <table class="scores-table">
+            <thead>
+              <tr>
+                <th>学期 / 教科</th>
+                <% subjects.each do |subject| %>
+                  <th class="text-center">
+                    <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+                  </th>
+                <% end %>
+              </tr>
+            </thead>
 
-          <% subjects.each do |subject| %>
-            <% score = list.find { |s| s.subject == subject } %>
-            <td><%= score&.score || "–" %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  <% else %>
-    <p>まだ成績が登録されていません。</p>
-  <% end %>
+            <tbody>
+              <% grouped_scores.each do |(term, test_type), list| %>
+                <tr>
+                  <td class="term-cell">
+                    <span class="term-title">
+                      <%= I18n.t("activerecord.enums.score.term.#{term}") %>
+                    </span>
+                    <span class="term-sub">
+                      （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
+                    </span>
+                  </td>
 
-<hr>
+                  <% subjects.each do |subject| %>
+                    <% score = list.find { |s| s.subject == subject } %>
+                    <td class="score-cell">
+                      <% if score %>
+                        <span class="score-badge"><%= score.score %></span>
+                      <% else %>
+                        <span class="score-empty">–</span>
+                      <% end %>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
 
-<h3>成績推移（合計点）</h3>
+        <div class="scores-note">
+          ※ 過去のテスト結果が表示されます
+        </div>
+      </div>
+    <% else %>
+      <p class="no-scores">まだ成績が登録されていません。</p>
+    <% end %>
 
-<h4>棒グラフ（テスト別 合計点）</h4>
+    <!-- グラフ -->
+    <div class="charts">
+      <h3 class="charts-title">成績推移（合計点）</h3>
 
-<%= bar_chart @line_chart_data_by_student[student.id],
-      xtitle: "テスト",
-      ytitle: "合計点",
-      min: 0,
-      max: 500,
-      height: "400px" %>
+      <div class="chart-card">
+        <h4 class="chart-subtitle">棒グラフ（テスト別 合計点）</h4>
+        <%= bar_chart @line_chart_data_by_student[student.id],
+              xtitle: "テスト",
+              ytitle: "合計点",
+              min: 0,
+              max: 500,
+              height: "360px" %>
+      </div>
 
-<hr>
+      <div class="chart-card">
+        <h4 class="chart-subtitle">折れ線グラフ（推移）</h4>
+        <%= line_chart @line_chart_data_by_student[student.id],
+              xtitle: "テスト",
+              ytitle: "合計点",
+              min: 0,
+              max: 500,
+              curve: false,
+              height: "360px" %>
+      </div>
+    </div>
 
-<h4>折れ線グラフ（推移）</h4>
-
-<%= line_chart @line_chart_data_by_student[student.id],
-      xtitle: "テスト",
-      ytitle: "合計点",
-      min: 0,
-      max: 500,
-      curve: false,
-      height: "400px" %>
-      
-  <hr>
+  </section>
 <% end %>

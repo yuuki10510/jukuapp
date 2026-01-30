@@ -1,0 +1,136 @@
+/* ===== タイトル ===== */
+.scores-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+/* ===== セクション ===== */
+.scores-section {
+  margin-bottom: 64px;
+}
+
+/* ===== 生徒情報 ===== */
+.student-meta {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #475569;
+}
+
+.meta-label {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.meta-value {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ===== テーブルカード ===== */
+.scores-table-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.scores-table-wrapper {
+  overflow-x: auto;
+}
+
+.scores-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scores-table thead th {
+  background: #f8fafc;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.scores-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+/* ===== 学期セル ===== */
+.term-cell {
+  text-align: left;
+}
+
+.term-title {
+  display: block;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.term-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ===== 点数 ===== */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-weight: 700;
+}
+
+.score-empty {
+  color: #94a3b8;
+}
+
+/* ===== 注釈 ===== */
+.scores-note {
+  font-size: 12px;
+  color: #64748b;
+  padding: 10px;
+  text-align: center;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ===== グラフ ===== */
+.charts {
+  margin-top: 32px;
+}
+
+.charts-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ===== 空状態 ===== */
+.no-scores {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
