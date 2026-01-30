@@ -1,0 +1,184 @@
+/* ===== レイアウト ===== */
+.user-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f8fafc;
+}
+
+.user-login-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== ロゴ・見出し ===== */
+.user-login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.user-login-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.user-login-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* ===== カード ===== */
+.user-login-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+/* ===== タイトル ===== */
+.user-login-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 24px;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+}
+
+/* ===== フォーム ===== */
+.user-form-group {
+  margin-bottom: 20px;
+}
+
+.user-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.user-form-field {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.user-form-field:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.user-form-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* ===== remember / links ===== */
+.user-login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.user-login-options a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.user-login-options a:hover {
+  text-decoration: underline;
+}
+
+/* ===== ボタン ===== */
+.user-login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.user-login-btn:hover {
+  background: #1d4ed8;
+}
+
+.user-login-btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== 区切り ===== */
+.user-login-divider {
+  text-align: center;
+  margin: 28px 0;
+  font-size: 13px;
+  color: #94a3b8;
+  position: relative;
+}
+
+.user-login-divider::before,
+.user-login-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.user-login-divider::before {
+  left: 0;
+}
+.user-login-divider::after {
+  right: 0;
+}
+
+/* ===== ゲストログイン ===== */
+.user-guest-btn {
+  width: 100%;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.user-guest-btn:hover {
+  background: #f1f5f9;
+}
+
+/* ===== フッター ===== */
+.user-login-footer {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 12px;
+  color: #94a3b8;
+}

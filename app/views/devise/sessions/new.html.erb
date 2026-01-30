@@ -1,34 +1,63 @@
-<h2>ログイン</h2>
+<div class="user-login-page">
+  <div class="user-login-container">
 
-<%= render "devise/shared/error_messages", resource: resource %>
-
-<%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div>
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, t("devise.sessions.new.remember_me") %>
+    <div class="user-login-header">
+      <div class="user-login-logo">塾アプリ</div>
+      <div class="user-login-subtitle">生徒・保護者ログイン</div>
     </div>
-  <% end %>
 
-  <div>
-    <%= f.submit t("devise.sessions.new.sign_in") %>
+    <div class="user-login-card">
+      <h2 class="user-login-title">ログイン</h2>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= form_with model: resource,
+            as: resource_name,
+            url: session_path(resource_name),
+            local: true do |f| %>
+
+        <div class="user-form-group">
+          <label class="user-form-label">メールアドレス</label>
+          <div style="position: relative;">
+            <span class="user-form-icon">✉️</span>
+            <%= f.email_field :email,
+                  autofocus: true,
+                  autocomplete: "email",
+                  class: "user-form-field" %>
+          </div>
+        </div>
+
+        <div class="user-form-group">
+          <label class="user-form-label">パスワード</label>
+          <div style="position: relative;">
+            <span class="user-form-icon">🔒</span>
+            <%= f.password_field :password,
+                  autocomplete: "current-password",
+                  class: "user-form-field" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="user-login-options">
+            <label>
+              <%= f.check_box :remember_me %>
+              ログイン情報を保持
+            </label>
+            <%= link_to "パスワードを忘れた場合", new_password_path(resource_name) %>
+          </div>
+        <% end %>
+
+        <%= f.submit t("devise.sessions.new.sign_in"),
+              class: "user-login-btn" %>
+      <% end %>
+
+      <div class="user-login-divider">または</div>
+
+      <%= button_to "ゲスト保護者でログイン",
+            users_guest_parent_sign_in_path,
+            method: :post,
+            class: "user-guest-btn" %>
+    </div>
+
   </div>
-<% end %>
-
-<hr>
-
-<div>
-  <%= button_to "ゲスト保護者でログイン", users_guest_parent_sign_in_path, method: :post %>
 </div>
-
-<%= render "devise/shared/links" %>
