@@ -1,0 +1,28 @@
+/* =========================
+   Validation Errors (Global)
+   ========================= */
+
+.validation-errors {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #7f1d1d;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.validation-errors__title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.validation-errors__list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.validation-errors__list li {
+  line-height: 1.6;
+}

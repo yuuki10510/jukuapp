@@ -1,6 +1,6 @@
 <h2 class="admin-login-title">管理者ログイン</h2>
 
-<%= render "devise/shared/error_messages", resource: @user %>
+<%= render "shared/validation_errors", resource: @user %>
 
 <div class="admin-login-container">
   <%= form_with url: admin_login_path, local: true, class: "admin-login-form" do |f| %>

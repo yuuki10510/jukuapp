@@ -9,7 +9,8 @@
     <div class="user-login-card">
       <h2 class="user-login-title">ログイン</h2>
 
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "shared/validation_errors", resource: @user %>
+
 
       <%= form_with model: resource,
             as: resource_name,

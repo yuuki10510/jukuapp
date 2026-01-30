@@ -1,0 +1,19 @@
+<% if resource&.errors&.any? || flash[:alert].present? %>
+  <div class="validation-errors">
+    <div class="validation-errors__title">
+      入力内容に誤りがあります
+    </div>
+
+    <ul class="validation-errors__list">
+      <% if resource&.errors&.any? %>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
+
+      <% if flash[:alert].present? %>
+        <li><%= flash[:alert] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
