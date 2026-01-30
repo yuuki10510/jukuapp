@@ -1,8 +1,26 @@
-<h1>マイページ</h1>
+<div class="my-page-container">
+  <h1 class="my-page-title">マイページ</h1>
 
-<ul>
-  <li><%= link_to "成績確認", scores_path %></li>
-  <li><%= link_to "お知らせ", announcements_path %></li>
-  <li><%= link_to "プロフィール", profile_path %></li>
-</ul>
+  <ul class="my-page-menu">
+    <li>
+      <%= link_to scores_path, class: "menu-card" do %>
+        <span class="menu-icon">📊</span>
+        <span class="menu-text">成績確認</span>
+      <% end %>
+    </li>
 
+    <li>
+      <%= link_to announcements_path, class: "menu-card" do %>
+        <span class="menu-icon">📢</span>
+        <span class="menu-text">お知らせ</span>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to profile_path, class: "menu-card" do %>
+        <span class="menu-icon">👤</span>
+        <span class="menu-text">プロフィール</span>
+      <% end %>
+    </li>
+  </ul>
+</div>

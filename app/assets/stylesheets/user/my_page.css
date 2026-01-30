@@ -1,0 +1,61 @@
+/* ===== 全体 ===== */
+.my-page-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== タイトル ===== */
+.my-page-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* ===== メニュー ===== */
+.my-page-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+/* ===== カード ===== */
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  border-color: #3b82f6;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* ===== アイコン ===== */
+.menu-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+/* ===== テキスト ===== */
+.menu-text {
+  font-size: 16px;
+}
