@@ -1,18 +1,27 @@
-<h1>お知らせ一覧</h1>
+<h1 class="page-title">お知らせ一覧</h1>
 
-<%= link_to "新規作成", new_admin_announcement_path %>
+<%= link_to "新規作成", new_admin_announcement_path, class: "btn-primary" %>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>操作</th>
-  </tr>
-  <% @announcements.each do |a| %>
-    <tr>
-      <td><%= a.title %></td>
-      <td>
-        <%= link_to "編集", edit_admin_announcement_path(a) %> 
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="card">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th class="text-right">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @announcements.each do |a| %>
+        <tr>
+          <td class="title-cell">
+            <span class="icon">📣</span>
+            <%= a.title %>
+          </td>
+          <td class="text-right">
+            <%= link_to "編集", edit_admin_announcement_path(a), class: "btn-link" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
