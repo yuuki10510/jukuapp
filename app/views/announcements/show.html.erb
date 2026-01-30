@@ -1,9 +1,17 @@
-<h1><%= @announcement.title %></h1>
+<div class="user-announcement-show">
+  <div class="user-announcement-card">
+    <h1 class="user-announcement-title">
+      <%= @announcement.title %>
+    </h1>
 
-<p>
-  <%= simple_format(@announcement.body) %>
-</p>
+    <div class="user-announcement-body">
+      <%= simple_format(@announcement.body) %>
+    </div>
 
-<hr>
+    <hr class="user-announcement-divider">
 
-<%= link_to "お知らせ一覧に戻る", announcements_path %>
+    <div class="user-announcement-back">
+      <%= link_to "お知らせ一覧に戻る", announcements_path %>
+    </div>
+  </div>
+</div>

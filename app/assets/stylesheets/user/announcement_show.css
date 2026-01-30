@@ -1,0 +1,76 @@
+/* ===== ページ全体 ===== */
+.user-announcement-show {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* ===== カード ===== */
+.user-announcement-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+/* ===== タイトル ===== */
+.user-announcement-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-announcement-title::before {
+  content: "📢";
+  font-size: 22px;
+  opacity: 0.85;
+}
+
+/* ===== 本文 ===== */
+.user-announcement-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #334155;
+  margin-top: 16px;
+}
+
+/* simple_format 対応 */
+.user-announcement-body p {
+  margin-bottom: 16px;
+}
+
+/* ===== 区切り ===== */
+.user-announcement-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 32px 0;
+}
+
+/* ===== 戻るリンク ===== */
+.user-announcement-back {
+  text-align: center;
+}
+
+.user-announcement-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.user-announcement-back a:hover {
+  color: #3b82f6;
+}
+
+.user-announcement-back a::before {
+  content: "←";
+  font-size: 16px;
+}
