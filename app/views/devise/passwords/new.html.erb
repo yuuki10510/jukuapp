@@ -1,16 +1,37 @@
-<h2>パスワード変更</h2>
+<div class="user-password-page">
+  <div class="user-password-container">
 
-<%= render "devise/shared/error_messages", resource: resource %>
+    <div class="user-password-header">
+      <div class="user-password-logo">塾アプリ</div>
+      <div class="user-password-subtitle">パスワード再設定</div>
+    </div>
 
-<%= form_with model: resource, as: resource_name, url: password_path(resource_name), local: true do |f| %>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="user-password-card">
+      <h2 class="user-password-title">パスワード変更</h2>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= form_with model: resource,
+            as: resource_name,
+            url: password_path(resource_name),
+            local: true do |f| %>
+
+        <div class="user-password-group">
+          <label class="user-password-label">メールアドレス</label>
+          <%= f.email_field :email,
+                autofocus: true,
+                autocomplete: "email",
+                class: "user-password-field" %>
+        </div>
+
+        <%= f.submit t("devise.passwords.new.send_me_reset_password_instructions"),
+              class: "user-password-btn" %>
+      <% end %>
+
+      <div class="user-password-links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+
   </div>
-
-  <div>
-    <%= f.submit t("devise.passwords.new.send_me_reset_password_instructions") %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
