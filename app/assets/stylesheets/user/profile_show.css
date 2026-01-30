@@ -1,0 +1,95 @@
+/* ===== ページ全体 ===== */
+.profile-show-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== タイトル ===== */
+.profile-show-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ===== カード ===== */
+.profile-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+/* ===== テーブル ===== */
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-table th {
+  width: 30%;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  padding: 14px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-table td {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  padding: 14px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-table tr:last-child th,
+.profile-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== アクション ===== */
+.profile-actions-stack {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.profile-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.profile-edit-btn:hover {
+  background: #4338ca;
+}
+
+/* 戻るリンク */
+.profile-back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+}
+
+.profile-back-link:hover {
+  color: #4f46e5;
+}
+
+.profile-back-link::before {
+  content: "←";
+  margin-right: 6px;
+}
