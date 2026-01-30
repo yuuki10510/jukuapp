@@ -38,7 +38,16 @@
       <td><%= student.name %></td>
       <td><%= profile.grade %></td>
       <td><%= profile.active? ? "在籍中" : "退塾済み" %></td>
-      <td><%= link_to "詳細", admin_student_path(student) %></td>
+      <td>
+        <!-- 成績入力 -->
+        <%= link_to "成績入力", new_admin_student_score_path(student) %>
+
+        <% if profile.active? %>
+          
+          <!-- 退塾処理 -->
+          <%= link_to "退塾", new_admin_student_withdrawal_path(student) %>
+       <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
