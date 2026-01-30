@@ -1,19 +1,28 @@
-<h1>お知らせ一覧</h1>
+<h1 class="user-announcements-title">お知らせ一覧</h1>
 
 <% if @announcements.any? %>
-  <ul>
-    <% @announcements.each do |announcement| %>
-      <li>
-        <strong>
-          <%= link_to announcement.title, announcement_path(announcement) %>
-        </strong>
-        <br>
-        <small>
-          <%= l announcement.created_at, format: :short %>
-        </small>
-      </li>
-    <% end %>
-  </ul>
+  <div class="user-announcements-card">
+    <ul class="user-announcements-list">
+      <% @announcements.each do |announcement| %>
+        <li class="user-announcement-item">
+          <%= link_to announcement_path(announcement),
+                class: "user-announcement-link" do %>
+
+            <div class="user-announcement-title">
+              <%= announcement.title %>
+            </div>
+
+            <div class="user-announcement-date">
+              <%= l announcement.created_at, format: :short %>
+            </div>
+
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% else %>
-  <p>現在、お知らせはありません。</p>
+  <p class="no-announcements">
+    現在、お知らせはありません。
+  </p>
 <% end %>
