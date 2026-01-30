@@ -1,53 +1,64 @@
-<h1>生徒一覧</h1>
+<h1 class="students-title">生徒一覧</h1>
 
-<%= form_with url: admin_students_path, method: :get, local: true do %>
-  <div class="field">
+<%= form_with url: admin_students_path, method: :get, local: true, class: "students-filter" do %>
+  <div class="filter-group">
     <%= label_tag :grade, "学年で絞り込み" %>
     <%= select_tag :grade,
       options_for_select(
         [
-          ["小1", "小1"], ["小2", "小2"], ["小3", "小3"], ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
+          ["小1", "小1"], ["小2", "小2"], ["小3", "小3"],
+          ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
           ["中1", "中1"], ["中2", "中2"], ["中3", "中3"],
           ["高1", "高1"], ["高2", "高2"], ["高3", "高3"]
         ],
         params[:grade]
       ),
-      include_blank: "すべて"
+      include_blank: "すべて",
+      class: "filter-select"
     %>
   </div>
 
-  <div class="field">
+  <div class="filter-group checkbox">
     <%= check_box_tag :include_withdrawn, "1", params[:include_withdrawn] == "1" %>
     <%= label_tag :include_withdrawn, "退塾者も表示する" %>
   </div>
 
-  <%= submit_tag "絞り込む" %>
+  <%= submit_tag "絞り込む", class: "filter-submit" %>
 <% end %>
 
-<table>
-  <tr>
-    <th>名前</th>
-    <th>学年</th>
-    <th>状態</th>
-    <th>操作</th>
-  </tr>
-
-  <% @students.each do |student| %>
-    <% profile = student.student_profile %>
-    <tr class="<%= 'withdrawn' unless profile.active? %>">
-      <td><%= student.name %></td>
-      <td><%= profile.grade %></td>
-      <td><%= profile.active? ? "在籍中" : "退塾済み" %></td>
-      <td>
-        <!-- 成績入力 -->
-        <%= link_to "成績入力", new_admin_student_score_path(student) %>
-
-        <% if profile.active? %>
-          
-          <!-- 退塾処理 -->
-          <%= link_to "退塾", new_admin_student_withdrawal_path(student) %>
-       <% end %>
-      </td>
+<table class="students-table">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>学年</th>
+      <th>状態</th>
+      <th class="actions">成績・退塾操作</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <% profile = student.student_profile %>
+      <tr class="<%= 'withdrawn' unless profile.active? %>">
+        <td class="student-name"><%= student.name %></td>
+        <td><%= profile.grade %></td>
+        <td>
+          <span class="status <%= profile.active? ? 'active' : 'inactive' %>">
+            <%= profile.active? ? "在籍中" : "退塾済み" %>
+          </span>
+        </td>
+        <td class="actions">
+          <%= link_to "成績入力",
+                new_admin_student_score_path(student),
+                class: "action-link" %>
+
+          <% if profile.active? %>
+            <%= link_to "退塾",
+                  new_admin_student_withdrawal_path(student),
+                  class: "action-link danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
