@@ -50,6 +50,12 @@
 
         <%= f.submit t("devise.sessions.new.sign_in"),
               class: "user-login-btn" %>
+        <div class="user-signup-link-area">
+          <p class="user-signup-text">
+            はじめてご利用の方は
+            <%= link_to "新規登録はこちら", select_role_path, class: "user-signup-link" %>
+          </p>
+        </div>
       <% end %>
 
       <div class="user-login-divider">または</div>
@@ -59,6 +65,5 @@
             method: :post,
             class: "user-guest-btn" %>
     </div>
-
   </div>
 </div>
