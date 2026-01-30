@@ -1,51 +1,75 @@
-<h1>成績入力</h1>
+<h1 class="score-title">成績入力</h1>
 
-<p>生徒：<strong><%= @student.name %></strong></p>
+<p class="score-student">
+  生徒：<strong><%= @student.name %></strong>
+</p>
 
-<%= form_with url: admin_student_scores_path(@student), local: true do %>
+<%= form_with url: admin_student_scores_path(@student),
+              local: true,
+              class: "score-form" do %>
 
-  <div>
-    <%= label_tag :term, "学期" %><br>
-    <%= select_tag :term,
-          options_for_select(Score.terms_i18n.invert, params[:term]),
-          prompt: "学期を選択",
-          required: true %>
+  <!-- 学期・テスト種別 -->
+  <div class="score-meta">
+    <div class="meta-group">
+      <%= label_tag :term, "学期" %>
+      <%= select_tag :term,
+            options_for_select(Score.terms_i18n.invert, params[:term]),
+            prompt: "学期を選択",
+            required: true,
+            class: "meta-select" %>
+    </div>
+
+    <div class="meta-group">
+      <%= label_tag :test_type, "テスト種別" %>
+      <%= select_tag :test_type,
+            options_for_select(Score.test_types_i18n.invert, params[:test_type]),
+            prompt: "テスト種別を選択",
+            required: true,
+            class: "meta-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= label_tag :test_type, "テスト種別" %><br>
-    <%= select_tag :test_type,
-          options_for_select(Score.test_types_i18n.invert, params[:test_type]),
-          prompt: "テスト種別を選択",
-          required: true %>
-  </div>
+  <hr class="score-divider">
 
-  <hr>
+  <!-- 科目別入力 -->
+  <h2 class="score-section-title">科目別点数入力</h2>
 
-  <table>
-    <tr>
-      <th>科目</th>
-      <th>点数</th>
-    </tr>
-
-    <% @subjects.each do |subject| %>
+  <table class="score-table">
+    <thead>
       <tr>
-        <td><%= I18n.t("activerecord.enums.score.subject.#{subject}") %></td>
-        <td>
-          <%= number_field_tag "scores[#{subject}][score]",
-                nil,
-                min: 0,
-                max: 100 %>
-        </td>
+        <th>科目</th>
+        <th>点数</th>
       </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <tr>
+          <td class="subject-name">
+            <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+          </td>
+          <td class="subject-score">
+            <%= number_field_tag "scores[#{subject}][score]",
+                  nil,
+                  min: 0,
+                  max: 100,
+                  class: "score-input" %>
+            <span class="score-unit">点</span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
-  <br>
-
-  <%= submit_tag "成績を保存する" %>
+  <!-- 操作 -->
+  <div class="score-actions">
+    <%= submit_tag "成績を保存する", class: "score-submit" %>
+    <%= link_to "キャンセル",
+          admin_student_path(@student),
+          class: "score-cancel" %>
+  </div>
 <% end %>
 
-<br>
-
-<%= link_to "生徒詳細に戻る", admin_student_path(@student) %>
+<div class="score-back">
+  <%= link_to "← 生徒詳細に戻る", admin_student_path(@student) %>
+</div>

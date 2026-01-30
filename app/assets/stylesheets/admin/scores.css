@@ -1,0 +1,161 @@
+/* ===== 成績入力 ===== */
+
+.score-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.score-student {
+  margin-bottom: 24px;
+  color: #475569;
+}
+
+/* 学期・テスト種別 */
+
+.score-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta-select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+}
+
+/* 区切り */
+
+.score-divider {
+  margin: 32px 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* 科目 */
+
+.score-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.score-table th {
+  text-align: left;
+  padding: 8px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.score-table td {
+  background: #f8fafc;
+  padding: 14px 16px;
+}
+
+.subject-name {
+  font-weight: 600;
+}
+
+.subject-score {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.score-input {
+  width: 80px;
+  text-align: right;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.score-unit {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* 操作 */
+
+.score-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.score-submit {
+  flex: 1;
+  padding: 14px;
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.score-submit:hover {
+  background: #4338ca;
+}
+
+.score-cancel {
+  padding: 14px 24px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  text-decoration: none;
+}
+
+/* 戻る */
+
+.score-back {
+  margin-top: 24px;
+}
+
+.score-back a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== 点数列を中央寄せにする ===== */
+
+/* ヘッダ（点数）を中央 */
+.score-table th:last-child {
+  text-align: center;
+}
+
+/* セル全体も中央基準に */
+.score-table td.subject-score {
+  display: flex;
+  justify-content: center; /* ← ここがポイント */
+  align-items: center;
+  gap: 6px;
+}
+
+/* 入力欄 */
+.score-input {
+  width: 80px;
+  text-align: right; /* 数字は右寄せのままが見やすい */
+}
+
+/* 単位 */
+.score-unit {
+  font-size: 0.85rem;
+  color: #64748b;
+}
