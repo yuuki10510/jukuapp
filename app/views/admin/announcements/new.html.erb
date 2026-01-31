@@ -31,8 +31,7 @@
     <%= f.submit "作成する", class: "btn-primary" %>
   </div>
 
+  <div class="back-link">
+    <%= link_to "← お知らせ一覧に戻る", admin_announcements_path, class: "btn-link" %>
+  </div>
 <% end %>
-
-<div class="back-link">
-  <%= link_to "戻る", admin_announcements_path %>
-</div>

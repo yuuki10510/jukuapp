@@ -39,10 +39,9 @@
           method: :delete,
           data: { confirm: "本当に削除しますか？" },
           class: "btn-danger" %>
+  <div class="back-link">
+    <%= link_to "← お知らせ一覧に戻る", admin_announcements_path %>
   </div>
 
 <% end %>
 
-<div class="back-link">
-  <%= link_to "戻る", admin_announcements_path %>
-</div>

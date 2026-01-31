@@ -75,7 +75,9 @@
 
 /* ===== 戻るリンク ===== */
 .back-link {
-  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
 }
 
 .back-link a {

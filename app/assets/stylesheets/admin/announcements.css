@@ -9,6 +9,14 @@
   text-align: right;
 }
 
+/* ===== ページ上部アクション ===== */
+.page-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
 /* ===== ボタン ===== */
 .btn-primary {
   display: inline-flex;

@@ -1,5 +1,9 @@
 <h3 class="scores-title">成績一覧</h3>
 
+<p class="score-student">
+  生徒：<strong><%= @student.name %></strong>
+</p>
+
 <p class="scores-actions">
   <%= link_to "成績入力",
         new_admin_student_score_path(@student),
