@@ -1,0 +1,107 @@
+/* =========================
+   新規登録（生徒・保護者）
+========================= */
+
+.user-auth-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.user-auth-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== ヘッダー ===== */
+.user-auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.user-auth-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.user-auth-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* ===== カード ===== */
+.user-auth-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.user-auth-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 24px;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+}
+
+/* ===== フォーム ===== */
+.user-form-group {
+  margin-bottom: 20px;
+}
+
+.user-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.user-form-input,
+.user-form-select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.user-form-input:focus,
+.user-form-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* ===== 登録ボタン ===== */
+.user-auth-submit {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.user-auth-submit:hover {
+  background: #1d4ed8;
+}
+
+.user-auth-submit:active {
+  transform: scale(0.98);
+}

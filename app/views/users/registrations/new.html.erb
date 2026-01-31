@@ -1,47 +1,61 @@
-<h2>新規登録</h2>
+<div class="user-auth-page">
+  <div class="user-auth-container">
 
-<%= render "devise/shared/error_messages", resource: resource %>
-
-<%= form_with model: resource, url: registration_path(resource_name), local: true do |f| %>
-  <%= hidden_field_tag "user[role]", params[:role] %>
-
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <% if params[:role] == "student" %>
-    <div>
-      <%= label_tag :school_name, "学校名" %>
-      <%= text_field_tag "user[school_name]" %>
+    <div class="user-auth-header">
+      <div class="user-auth-logo">塾アプリ</div>
+      <div class="user-auth-subtitle">新規登録</div>
     </div>
 
-    <div class="field">
-      <%= f.label :grade, "学年" %>
-      <%= f.select :grade,
-        [
-          ["小1", "小1"], ["小2", "小2"], ["小3", "小3"], ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
-          ["中1", "中1"], ["中2", "中2"], ["中3", "中3"],
-          ["高1", "高1"], ["高2", "高2"], ["高3", "高3"]
-        ],
-        prompt: "選択してください" %>
+    <div class="user-auth-card">
+      <h2 class="user-auth-title">新規登録</h2>
+
+      <%= render "shared/validation_errors", resource: resource %>
+
+      <%= form_with model: resource, url: registration_path(resource_name), local: true do |f| %>
+        <%= hidden_field_tag "user[role]", params[:role] %>
+
+        <div class="user-form-group">
+          <%= f.label :name, "名前", class: "user-form-label" %>
+          <%= f.text_field :name, class: "user-form-input" %>
+        </div>
+
+        <% if params[:role] == "student" %>
+          <div class="user-form-group">
+            <%= label_tag :school_name, "学校名", class: "user-form-label" %>
+            <%= text_field_tag "user[school_name]", nil, class: "user-form-input" %>
+          </div>
+
+          <div class="user-form-group">
+            <%= f.label :grade, "学年", class: "user-form-label" %>
+            <%= f.select :grade,
+                  [
+                    ["小1", "小1"], ["小2", "小2"], ["小3", "小3"],
+                    ["小4", "小4"], ["小5", "小5"], ["小6", "小6"],
+                    ["中1", "中1"], ["中2", "中2"], ["中3", "中3"],
+                    ["高1", "高1"], ["高2", "高2"], ["高3", "高3"]
+                  ],
+                  { prompt: "選択してください" },
+                  class: "user-form-select" %>
+          </div>
+        <% end %>
+
+        <div class="user-form-group">
+          <%= f.label :email, "メールアドレス", class: "user-form-label" %>
+          <%= f.email_field :email, class: "user-form-input" %>
+        </div>
+
+        <div class="user-form-group">
+          <%= f.label :password, "パスワード", class: "user-form-label" %>
+          <%= f.password_field :password, class: "user-form-input" %>
+        </div>
+
+        <div class="user-form-group">
+          <%= f.label :password_confirmation, "パスワード（確認）", class: "user-form-label" %>
+          <%= f.password_field :password_confirmation, class: "user-form-input" %>
+        </div>
+
+        <%= f.submit "登録", class: "user-auth-submit" %>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
   </div>
-
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <%= f.submit "登録" %>
-<% end %>
+</div>
