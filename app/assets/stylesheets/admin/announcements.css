@@ -17,6 +17,10 @@
   margin-bottom: 16px;
 }
 
+.page-actions .btn-primary {
+  margin-right: 24px; 
+}
+
 /* ===== ボタン ===== */
 .btn-primary {
   display: inline-flex;
