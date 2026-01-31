@@ -48,8 +48,8 @@
           </span>
         </td>
         <td class="actions">
-          <%= link_to "成績入力",
-                new_admin_student_score_path(student),
+          <%= link_to "成績確認",
+                admin_student_path(student),
                 class: "action-link" %>
 
           <% if profile.active? %>
