@@ -15,13 +15,27 @@
       <tr class="parents-row">
         <td class="parents-name"><%= parent.name %></td>
         <td class="parents-email"><%= parent.email %></td>
+
         <td class="parents-children">
-          <% if parent.children.any? %>
-            <%= parent.children.map(&:name).join("、") %>
+          <% if parent.parent_students.any? %>
+            <ul class="parents-children-list">
+              <% parent.parent_students.each do |ps| %>
+                <li class="parents-child-item">
+                  <span class="parents-child-name"><%= ps.student.name %></span>
+
+                  <%= button_to "紐付け解除",
+                        admin_parent_parent_student_path(parent, ps),
+                        method: :delete,
+                        data: { confirm: "この生徒との紐付けを解除しますか？" },
+                        class: "parents-unlink" %>
+                </li>
+              <% end %>
+            </ul>
           <% else %>
             <span class="parents-none">なし</span>
           <% end %>
         </td>
+
         <td class="parents-action">
           <%= link_to "生徒を紐付ける",
                 new_admin_parent_parent_student_path(parent),

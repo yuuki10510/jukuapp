@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "dashboard#index"
 
+    resources :parents do
+      resources :parent_students, only: [:new, :create, :destroy]
+    end
+
     # --- 生徒管理 ---
     resources :students do
       get    "scores/edit_test",
