@@ -159,3 +159,46 @@
   font-size: 0.85rem;
   color: #64748b;
 }
+
+/* ===== 成績編集 ===== */
+
+.score-header {
+  margin-bottom: 24px;
+}
+
+.score-meta-text {
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* 編集画面では table をそのまま流用 */
+
+.score-table td {
+  vertical-align: middle;
+}
+
+/* 削除ボタン */
+
+.score-danger {
+  margin-top: 32px;
+}
+
+.score-danger button {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.score-danger button:hover {
+  background: #fecaca;
+}
+
+/* 戻るリンク */
+
+.score-back {
+  margin-top: 24px;
+}

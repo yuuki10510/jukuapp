@@ -1,10 +1,12 @@
-<h1>成績編集</h1>
+<h1 class="score-title">成績編集</h1>
 
-<p>
-  生徒：<strong><%= @student.name %></strong><br>
-  学期：<strong><%= I18n.t("activerecord.enums.score.term.#{@term}") %></strong><br>
-  テスト：<strong><%= I18n.t("activerecord.enums.score.test_type.#{@test_type}") %></strong>
-</p>
+<div class="score-header">
+  <p class="score-meta-text">
+    生徒：<strong><%= @student.name %></strong><br>
+    学期：<strong><%= I18n.t("activerecord.enums.score.term.#{@term}") %></strong><br>
+    テスト：<strong><%= I18n.t("activerecord.enums.score.test_type.#{@test_type}") %></strong>
+  </p>
+</div>
 
 <%= form_with(
       url: admin_student_update_test_scores_path(@student),
@@ -15,44 +17,56 @@
   <%= hidden_field_tag :term, @term %>
   <%= hidden_field_tag :test_type, @test_type %>
 
-  <table>
-    <tr>
-      <th>教科</th>
-      <th>点数</th>
-    </tr>
+  <h2 class="score-section-title">科目別点数入力</h2>
 
-    <% @subjects.each do |subject| %>
-      <% score = @scores_by_subject[subject] %>
+  <table class="score-table">
+    <thead>
       <tr>
-        <td>
-          <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
-        </td>
-        <td>
-          <%= number_field_tag "scores[#{subject}][score]",
-                score&.score,
-                min: 0,
-                max: 100 %>
-        </td>
+        <th>教科</th>
+        <th>点数</th>
       </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <% score = @scores_by_subject[subject] %>
+        <tr>
+          <td class="subject-name">
+            <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+          </td>
+          <td class="subject-score">
+            <%= number_field_tag "scores[#{subject}][score]",
+                  score&.score,
+                  min: 0,
+                  max: 100,
+                  class: "score-input" %>
+            <span class="score-unit">点</span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
-  <br>
+  <div class="score-actions">
+    <%= submit_tag "成績を更新する", class: "score-submit" %>
+    <%= link_to "キャンセル", admin_student_path(@student), class: "score-cancel" %>
+  </div>
 
-  <%= submit_tag "成績を更新する" %>
 <% end %>
 
-<hr>
+<div class="score-divider"></div>
 
-<%= button_to "このテストの成績をすべて削除",
-      admin_student_destroy_test_scores_path(@student),
-      method: :delete,
-      params: {
-        term: @term,
-        test_type: @test_type
-      },
-      data: { confirm: "このテストの成績をすべて削除します。よろしいですか？" } %>
+<div class="score-danger">
+  <%= button_to "このテストの成績をすべて削除",
+        admin_student_destroy_test_scores_path(@student),
+        method: :delete,
+        params: {
+          term: @term,
+          test_type: @test_type
+        },
+        data: { confirm: "このテストの成績をすべて削除します。よろしいですか？" } %>
+</div>
 
-<br>
-
-<%= link_to "成績一覧に戻る", admin_student_path(@student) %>
+<div class="score-back">
+  <%= link_to "成績一覧に戻る", admin_student_path(@student) %>
+</div>
