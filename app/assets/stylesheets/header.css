@@ -1,0 +1,104 @@
+/* ===== ヘッダー全体 ===== */
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== ロゴ ===== */
+.app-header-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2563eb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== 右側エリア ===== */
+.app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ユーザー情報 */
+.app-header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.app-header-user-name {
+  font-weight: 600;
+}
+
+.app-header-user-role {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ===== ログアウトボタン ===== */
+.app-header-logout form {
+  margin: 0;
+  display: inline-flex;
+}
+
+.app-header-logout button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.app-header-logout button:hover {
+  background: #fee2e2;
+}
+
+/* button_to が生成する余計なラッパー対策 */
+.logout-form {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.logout-form .button_to {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+/* ボタン本体（今までのデザインを維持） */
+.logout-button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.logout-button:hover {
+  background: #fee2e2;
+}

@@ -1,25 +1,48 @@
-<header>
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h3>
-      <%= link_to "塾アプリ",
-        if user_signed_in? && current_user.admin?
-          admin_root_path
-        else
-          root_path
-        end
-      %>
-    </h3>
+<header class="app-header <%= current_user&.admin? ? 'is-admin' : '' %>">
+  <div class="app-header-inner">
+
+    <!-- ロゴ -->
+    <%= link_to(
+          "🎓 塾アプリ",
+          (user_signed_in? && current_user.admin?) ? admin_root_path : root_path,
+          class: "app-header-logo"
+        ) %>
 
     <% if user_signed_in? %>
-      <% if current_user.admin? %>
-        <%= button_to "ログアウト",
-              admin_logout_path,
-              method: :delete %>
-      <% else %>
-        <%= button_to "ログアウト",
-              destroy_user_session_path,
-              method: :delete %>
-      <% end %>
+      <div class="app-header-right">
+
+        <!-- ユーザー情報 -->
+        <div class="app-header-user">
+          <span>👤</span>
+          <div>
+            <div class="app-header-user-name">
+              <%= current_user.name %>
+            </div>
+            <div class="app-header-user-role">
+              <%= current_user.admin? ? "管理者" : "保護者" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- ログアウト -->
+        <div class="app-header-logout">
+          <% if current_user.admin? %>
+            <%= button_to "ログアウト",
+                  admin_logout_path,
+                  method: :delete,
+                  form: { class: "logout-form" },
+                  class: "logout-button" %>
+          <% else %>
+            <%= button_to "ログアウト",
+                  destroy_user_session_path,
+                  method: :delete,
+                  form: { class: "logout-form" },
+                  class: "logout-button" %>
+          <% end %>
+        </div>
+
+      </div>
     <% end %>
+
   </div>
 </header>
