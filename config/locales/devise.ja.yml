@@ -4,6 +4,9 @@ ja:
       unauthenticated: "メールアドレスまたはパスワードが違います。"
       invalid: "メールアドレスまたはパスワードが違います。"
       not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      already_authenticated: "すでにログインしています。"
+      user:
+        already_authenticated: "すでにログインしています。"
 
     sessions:
       new:

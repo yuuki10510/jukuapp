@@ -1,26 +1,62 @@
-/* ===== 管理者ログイン画面 ===== */
+/* =========================
+   管理者ログイン（共通ログインレイアウト）
+========================= */
 
-body {
-  background-color: #f8fafc;
-  font-family: "Inter", "Noto Sans JP", sans-serif;
+.login-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.admin-login-container {
+/* ヘッダー */
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.app-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* カード */
+
+.login-card {
+  width: 100%;
   max-width: 420px;
-  margin: 80px auto;
-  padding: 32px;
   background: #ffffff;
+  padding: 32px;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.admin-login-title {
-  font-size: 1.25rem;
+/* タイトル */
+
+.login-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 24px;
-  padding-left: 12px;
-  border-left: 4px solid #2563eb;
+}
+
+.login-title-bar {
+  width: 4px;
+  height: 20px;
+  background: #2563eb;
+  border-radius: 2px;
 }
 
 /* フォーム */
@@ -30,8 +66,8 @@ body {
 }
 
 .form-group label {
-  clar: block;
-  font-size: 0.9rem;
+  display: block;
+  font-size: 13px;
   font-weight: 600;
   color: #475569;
   margin-bottom: 6px;
@@ -43,7 +79,7 @@ body {
   border-radius: 10px;
   border: 1px solid #cbd5e1;
   background: #f8fafc;
-  font-size: 0.95rem;
+  font-size: 14px;
 }
 
 .form-input:focus {
@@ -52,7 +88,7 @@ body {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* ボタン */
+/* アクション */
 
 .form-actions {
   margin-top: 24px;
@@ -63,7 +99,7 @@ body {
   padding: 14px;
   background: #2563eb;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 700;
   border: none;
   border-radius: 12px;
@@ -74,12 +110,23 @@ body {
   background: #1d4ed8;
 }
 
-/* 区切り線 */
+/* 区切り */
 
-.divider {
-  margin: 32px 0;
-  border: none;
-  border-top: 1px solid #e2e8f0;
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
 }
 
 /* ゲストログイン */
