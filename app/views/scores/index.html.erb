@@ -78,19 +78,7 @@
                 max: 500,
                 height: "360px" %>
         </div>
-
-        <div class="chart-card">
-          <h4 class="chart-subtitle">折れ線グラフ（推移）</h4>
-          <%= line_chart @line_chart_data_by_student[student.id],
-                xtitle: "テスト",
-                ytitle: "合計点",
-                min: 0,
-                max: 500,
-                curve: false,
-                height: "360px" %>
-        </div>
       </div>
-
     </section>
   <% end %>
 </div>
