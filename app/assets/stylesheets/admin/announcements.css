@@ -1,62 +1,75 @@
-/* ===== 共通 ===== */
+/* ===== お知らせ一覧 ===== */
+
+.admin-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== ヘッダー ===== */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
 .page-title {
   font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: 800;
 }
 
-.text-right {
-  text-align: right;
-}
+/* ===== ボタン（新規作成） ===== */
 
-/* ===== ページ上部アクション ===== */
-.page-actions {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-}
-
-.page-actions .btn-primary {
-  margin-right: 24px; 
-}
-
-/* ===== ボタン ===== */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
+  padding: 10px 18px;
   background: #4F46E5;
   color: #fff;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  margin-bottom: 20px;
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
   background: #4338CA;
+  transform: translateY(-1px);
 }
 
-.btn-link {
-  color: #4F46E5;
-  font-weight: 500;
+/* ===== 編集ボタン（スマート化） ===== */
+
+.btn-edit {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  border-radius: 9999px;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.btn-link:hover {
-  text-decoration: underline;
+.btn-edit:hover {
+  background: #dbeafe;
 }
 
 /* ===== カード ===== */
+
 .card {
   background: #fff;
   border: 1px solid #E5E7EB;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
 }
 
 /* ===== テーブル ===== */
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -82,7 +95,12 @@
   background: #F9FAFB;
 }
 
+.text-right {
+  text-align: right;
+}
+
 /* ===== タイトル列 ===== */
+
 .title-cell {
   display: flex;
   align-items: center;

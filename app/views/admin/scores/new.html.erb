@@ -13,7 +13,7 @@
     <div class="meta-group">
       <%= label_tag :term, "学期" %>
       <%= select_tag :term,
-            options_for_select(Score.terms_i18n.invert, params[:term]),
+            options_for_select(Score.terms_i18n.invert),
             prompt: "学期を選択",
             required: true,
             class: "meta-select" %>
@@ -22,7 +22,7 @@
     <div class="meta-group">
       <%= label_tag :test_type, "テスト種別" %>
       <%= select_tag :test_type,
-            options_for_select(Score.test_types_i18n.invert, params[:test_type]),
+            options_for_select(Score.test_types_i18n.invert),
             prompt: "テスト種別を選択",
             required: true,
             class: "meta-select" %>
@@ -31,24 +31,25 @@
 
   <hr class="score-divider">
 
-  <!-- 科目別入力 -->
+  <!-- 科目別点数入力 -->
   <h2 class="score-section-title">科目別点数入力</h2>
 
   <table class="score-table">
     <thead>
       <tr>
-        <th>科目</th>
+        <th>教科</th>
         <th>点数</th>
       </tr>
     </thead>
 
     <tbody>
       <% @subjects.each do |subject| %>
-        <tr>
-          <td class="subject-name">
+        <tr class="subject-row <%= subject %>">
+          <td class="subject-name <%= subject %>">
             <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
           </td>
-          <td class="subject-score">
+
+          <td class="subject-score <%= subject %>">
             <%= number_field_tag "scores[#{subject}][score]",
                   nil,
                   min: 0,

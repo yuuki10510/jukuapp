@@ -1,24 +1,33 @@
-<h2>退塾処理</h2>
+<div class="withdrawal-page">
 
-<% if @withdrawal.errors.any? %>
-  <div class="error-messages">
-    <ul>
-      <% @withdrawal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <h2 class="withdrawal-title">退塾処理</h2>
 
-<%= form_with(
-      model: @withdrawal,
-      url: admin_student_withdrawal_path(@student),
-      local: true ) do |f| %>
+  <% if @withdrawal.errors.any? %>
+    <div class="error-messages">
+      <ul>
+        <% @withdrawal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div>
-    <%= f.label :reason, "退塾理由" %>
-    <%= f.text_area :reason, required: true %>
-  </div>
+  <%= form_with(
+        model: @withdrawal,
+        url: admin_student_withdrawal_path(@student),
+        local: true,
+        class: "withdrawal-form"
+      ) do |f| %>
 
-  <%= f.submit "退塾を確定する", class: "danger-submit" %>
-<% end %>
+    <div class="form-group">
+      <%= f.label :reason, "退塾理由" %>
+      <%= f.text_area :reason, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "退塾を確定する", class: "danger-submit" %>
+    </div>
+
+  <% end %>
+
+</div>

@@ -1,42 +1,44 @@
-<h1 class="dashboard-title">管理者ダッシュボード</h1>
+<div class="admin-dashboard-container">
+  <h1 class="dashboard-title">管理者ダッシュボード</h1>
 
-<p class="dashboard-subtitle">
-  今日のスクール状況を確認しましょう
-</p>
+  <p class="dashboard-subtitle">
+    今日のスクール状況を確認しましょう
+  </p>
 
-<hr class="dashboard-divider">
+  <hr class="dashboard-divider">
 
-<h2 class="section-title">管理メニュー</h2>
+  <h2 class="section-title">管理メニュー</h2>
 
-<ul class="dashboard-menu">
-  <li>
-    <%= link_to "生徒一覧", admin_students_path, class: "dashboard-menu-link" %>
-  </li>
-  <li>
-    <%= link_to "保護者一覧", admin_parents_path, class: "dashboard-menu-link" %>
-  </li>
-  <li>
-    <%= link_to "お知らせ管理", admin_announcements_path, class: "dashboard-menu-link" %>
-  </li>
-</ul>
-
-<hr class="dashboard-divider">
-
-<h2 class="section-title">最近のお知らせ</h2>
-
-<% if @recent_announcements.any? %>
-  <ul class="recent-announcements">
-    <% @recent_announcements.each do |announcement| %>
-      <li class="announcement-item">
-        <strong class="announcement-title">
-          <%= announcement.title %>
-        </strong>
-        <span class="announcement-date">
-          <%= l announcement.created_at, format: :short %>
-        </span>
-      </li>
-    <% end %>
+  <ul class="dashboard-menu">
+    <li>
+      <%= link_to "生徒一覧", admin_students_path, class: "dashboard-menu-link" %>
+    </li>
+    <li>
+      <%= link_to "保護者一覧", admin_parents_path, class: "dashboard-menu-link" %>
+    </li>
+    <li>
+      <%= link_to "お知らせ管理", admin_announcements_path, class: "dashboard-menu-link" %>
+    </li>
   </ul>
-<% else %>
-  <p class="empty-text">お知らせはまだありません。</p>
-<% end %>
+
+  <hr class="dashboard-divider">
+
+  <h2 class="section-title">最近のお知らせ</h2>
+
+  <% if @recent_announcements.any? %>
+    <ul class="recent-announcements">
+      <% @recent_announcements.each do |announcement| %>
+        <li class="announcement-item">
+          <strong class="announcement-title">
+            <%= announcement.title %>
+          </strong>
+          <span class="announcement-date">
+            <%= l announcement.created_at, format: :short %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="empty-text">お知らせはまだありません。</p>
+  <% end %>
+</div>

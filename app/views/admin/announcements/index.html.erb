@@ -1,29 +1,35 @@
-<h1 class="page-title">お知らせ一覧</h1>
+<div class="admin-page-container">
+  <div class="page-header">
+    <h1 class="page-title">お知らせ一覧</h1>
 
-<div class="page-actions">
-  <%= link_to "新規作成", new_admin_announcement_path, class: "btn-primary" %>
-</div>
+    <%= link_to "＋ 新規作成",
+        new_admin_announcement_path,
+        class: "btn-primary" %>
+  </div>
 
-<div class="card">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>タイトル</th>
-        <th class="text-right">操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @announcements.each do |a| %>
+  <div class="card">
+    <table class="table">
+      <thead>
         <tr>
-          <td class="title-cell">
-            <span class="icon">📣</span>
-            <%= a.title %>
-          </td>
-          <td class="text-right">
-            <%= link_to "編集", edit_admin_announcement_path(a), class: "btn-link" %>
-          </td>
+          <th>タイトル</th>
+          <th class="text-right">操作</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @announcements.each do |a| %>
+          <tr>
+            <td class="title-cell">
+              <span class="icon">📣</span>
+              <%= a.title %>
+            </td>
+            <td class="text-right">
+              <%= link_to "編集",
+                  edit_admin_announcement_path(a),
+                  class: "btn-edit" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

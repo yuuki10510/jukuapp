@@ -1,94 +1,96 @@
-<h1 class="scores-title">成績一覧</h1>
+<div class="admin-page-container">
+  <h1 class="scores-title">成績一覧</h1>
 
-<% @students.each do |student| %>
-  <section class="scores-section">
+  <% @students.each do |student| %>
+    <section class="scores-section">
 
-    <!-- 生徒情報 -->
-    <div class="student-meta">
-      <span class="meta-label">生徒氏名:</span>
-      <span class="meta-value"><%= student.name %></span>
-    </div>
+      <!-- 生徒情報 -->
+      <div class="student-meta">
+        <span class="meta-label">生徒氏名:</span>
+        <span class="meta-value"><%= student.name %></span>
+      </div>
 
-    <% scores = student.scores %>
-    <% subjects = Score.subjects.keys %>
-    <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
+      <% scores = student.scores %>
+      <% subjects = Score.subjects.keys %>
+      <% grouped_scores = scores.group_by { |s| [s.term, s.test_type] } %>
 
-    <% if grouped_scores.any? %>
-      <div class="scores-table-card">
-        <div class="scores-table-wrapper">
-          <table class="scores-table">
-            <thead>
-              <tr>
-                <th>学期 / 教科</th>
-                <% subjects.each do |subject| %>
-                  <th class="text-center">
-                    <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
-                  </th>
-                <% end %>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% grouped_scores.each do |(term, test_type), list| %>
+      <% if grouped_scores.any? %>
+        <div class="scores-table-card">
+          <div class="scores-table-wrapper">
+            <table class="scores-table">
+              <thead>
                 <tr>
-                  <td class="term-cell">
-                    <span class="term-title">
-                      <%= I18n.t("activerecord.enums.score.term.#{term}") %>
-                    </span>
-                    <span class="term-sub">
-                      （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
-                    </span>
-                  </td>
-
+                  <th class="term">学期 / 教科</th>
                   <% subjects.each do |subject| %>
-                    <% score = list.find { |s| s.subject == subject } %>
-                    <td class="score-cell">
-                      <% if score %>
-                        <span class="score-badge"><%= score.score %></span>
-                      <% else %>
-                        <span class="score-empty">–</span>
-                      <% end %>
-                    </td>
+                    <th class="subject <%= subject %>">
+                      <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
+                    </th>
                   <% end %>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                <% grouped_scores.each do |(term, test_type), list| %>
+                  <tr>
+                    <td class="term-cell">
+                      <span class="term-title">
+                        <%= I18n.t("activerecord.enums.score.term.#{term}") %>
+                      </span>
+                      <span class="term-sub">
+                        （<%= I18n.t("activerecord.enums.score.test_type.#{test_type}") %>）
+                      </span>
+                    </td>
+
+                    <% subjects.each do |subject| %>
+                      <% score = list.find { |s| s.subject == subject } %>
+                      <td class="score-cell <%= subject %>">
+                        <% if score %>
+                          <span class="score-badge"><%= score.score %></span>
+                        <% else %>
+                          <span class="score-empty">–</span>
+                        <% end %>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="scores-note">
+            ※ 過去のテスト結果が表示されます
+          </div>
+        </div>
+      <% else %>
+        <p class="no-scores">まだ成績が登録されていません。</p>
+      <% end %>
+
+      <!-- グラフ -->
+      <div class="charts">
+        <h3 class="charts-title">成績推移（合計点）</h3>
+
+        <div class="chart-card">
+          <h4 class="chart-subtitle">棒グラフ（テスト別 合計点）</h4>
+          <%= bar_chart @line_chart_data_by_student[student.id],
+                xtitle: "テスト",
+                ytitle: "合計点",
+                min: 0,
+                max: 500,
+                height: "360px" %>
         </div>
 
-        <div class="scores-note">
-          ※ 過去のテスト結果が表示されます
+        <div class="chart-card">
+          <h4 class="chart-subtitle">折れ線グラフ（推移）</h4>
+          <%= line_chart @line_chart_data_by_student[student.id],
+                xtitle: "テスト",
+                ytitle: "合計点",
+                min: 0,
+                max: 500,
+                curve: false,
+                height: "360px" %>
         </div>
       </div>
-    <% else %>
-      <p class="no-scores">まだ成績が登録されていません。</p>
-    <% end %>
 
-    <!-- グラフ -->
-    <div class="charts">
-      <h3 class="charts-title">成績推移（合計点）</h3>
-
-      <div class="chart-card">
-        <h4 class="chart-subtitle">棒グラフ（テスト別 合計点）</h4>
-        <%= bar_chart @line_chart_data_by_student[student.id],
-              xtitle: "テスト",
-              ytitle: "合計点",
-              min: 0,
-              max: 500,
-              height: "360px" %>
-      </div>
-
-      <div class="chart-card">
-        <h4 class="chart-subtitle">折れ線グラフ（推移）</h4>
-        <%= line_chart @line_chart_data_by_student[student.id],
-              xtitle: "テスト",
-              ytitle: "合計点",
-              min: 0,
-              max: 500,
-              curve: false,
-              height: "360px" %>
-      </div>
-    </div>
-
-  </section>
-<% end %>
+    </section>
+  <% end %>
+</div>

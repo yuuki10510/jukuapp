@@ -2,65 +2,89 @@
    保護者一覧
 ========================= */
 
+/* ===== ページ全体中央寄せ ===== */
+.parents-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* タイトル */
 .parents-title {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 24px;
 }
 
-/* テーブル全体 */
+/* テーブルラッパー */
+.parents-table-wrapper {
+  overflow-x: auto;
+}
+
+/* ===== テーブル ===== */
 .parents-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
   overflow: hidden;
 }
 
-/* ヘッダー */
+/* ===== ヘッダー ===== */
 .parents-th {
   background: #f8fafc;
   padding: 14px 16px;
-  font-size: 0.75rem;
+  font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: #64748b;
   border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
 }
 
-.parents-th-action {
+/* 列ごとに明示 */
+.parents-th.action {
   text-align: right;
 }
 
-/* 行 */
+/* ===== 行 ===== */
 .parents-row:hover {
   background: #f9fafb;
 }
 
-/* セル */
+/* ===== セル共通 ===== */
 .parents-table td {
   padding: 16px;
   border-bottom: 1px solid #e5e7eb;
   vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
+/* 名前 */
 .parents-name {
   font-weight: 600;
+  color: #0f172a;
 }
 
+/* メール */
 .parents-email {
   color: #64748b;
   font-size: 0.95rem;
 }
 
-/* 紐付け生徒 */
+/* ===== 紐付け生徒 ===== */
+.parents-children {
+  vertical-align: middle;
+}
+
+/* なし */
 .parents-none {
   display: inline-block;
-  padding: 4px 10px;
-  font-size: 0.75rem;
+  padding: 4px 12px;
+  font-size: 12px;
   border-radius: 999px;
   background: #f1f5f9;
   color: #334155;
@@ -75,13 +99,14 @@
 
 .parents-child-item {
   display: flex;
-  align-items: center;
+  align-items: center; /* ← ベースライン揃え */
   gap: 8px;
   margin-bottom: 6px;
 }
 
 .parents-child-name {
-  font-size: 0.9rem;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* ===== 解除ボタン ===== */
@@ -89,14 +114,13 @@
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
 
-  padding: 6px 12px;        
-  font-size: 0.85rem;        
+  padding: 6px 12px;
+  font-size: 12px;
   font-weight: 600;
-  border-radius: 8px;         
+  border-radius: 9999px;
 
-  background: rgba(239, 68, 68, 0.08);   
+  background: rgba(239, 68, 68, 0.08);
   color: #dc2626;
   border: 1px solid rgba(239, 68, 68, 0.25);
 
@@ -108,29 +132,27 @@
   background: rgba(239, 68, 68, 0.16);
 }
 
+/* form の余計な余白対策 */
 .parents-child-item form {
-  display: inline;
   margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
 }
 
-/* 操作 */
+/* ===== 操作列 ===== */
 .parents-action {
   text-align: right;
+  white-space: nowrap;
 }
 
+/* 紐付けボタン */
 .parents-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  font-size: 0.85rem;
+  padding: 6px 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #2563eb;
   border: 1px solid rgba(37, 99, 235, 0.25);
-  border-radius: 8px;
+  border-radius: 9999px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -139,13 +161,14 @@
   background: rgba(37, 99, 235, 0.08);
 }
 
-/* 戻る */
+/* ===== 戻る ===== */
 .parents-back {
   margin-top: 24px;
 }
 
 .parents-back a {
   color: #64748b;
+  font-weight: 600;
   text-decoration: none;
 }
 

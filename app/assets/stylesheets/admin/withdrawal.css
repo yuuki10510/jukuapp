@@ -2,19 +2,26 @@
    退塾処理画面
 ========================= */
 
+/* ページ全体を中央寄せ */
+.withdrawal-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
 /* 見出し */
-h2 {
+.withdrawal-title {
   font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-weight: 800;
+  margin-bottom: 24px;
 }
 
 /* エラーメッセージ */
 .error-messages {
   background: #fff1f2;
   border: 1px solid #fecdd3;
-  border-radius: 8px;
-  padding: 12px 16px;
+  border-radius: 10px;
+  padding: 14px 18px;
   margin-bottom: 24px;
 }
 
@@ -23,22 +30,21 @@ h2 {
   font-size: 0.9rem;
 }
 
-/* フォーム全体 */
-form {
+/* フォーム本体 */
+.withdrawal-form {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
   padding: 24px;
-  max-width: 640px;
 }
 
 /* フィールド */
-form > div {
+.withdrawal-form .form-group {
   margin-bottom: 24px;
 }
 
 /* ラベル */
-form label {
+.withdrawal-form label {
   display: block;
   font-weight: 600;
   margin-bottom: 8px;
@@ -46,45 +52,55 @@ form label {
 }
 
 /* テキストエリア */
-form textarea {
+.withdrawal-form textarea {
   width: 100%;
-  min-height: 120px;
-  padding: 12px;
-  border-radius: 8px;
+  min-height: 140px;
+  padding: 12px 14px;
+  border-radius: 10px;
   border: 1px solid #d1d5db;
   font-size: 0.95rem;
   resize: vertical;
 }
 
-form textarea:focus {
+.withdrawal-form textarea:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* 操作エリア */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* 危険操作ボタン */
 .danger-submit {
   background: #ffffff;
   color: #dc2626;
-  font-weight: 600;
-  padding: 12px 20px;
-  border: 1px solid #fca5a5;
-  border-radius: 8px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 1.5px solid #fca5a5;
+  border-radius: 9999px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .danger-submit:hover {
-  background: #f7cbcb;
+  background: #fee2e2;
 }
 
 .danger-submit:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 /* レスポンシブ */
 @media (max-width: 640px) {
-  form {
-    padding: 16px;
+  .withdrawal-page {
+    padding: 24px 16px;
+  }
+
+  .withdrawal-form {
+    padding: 20px;
   }
 }

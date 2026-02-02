@@ -11,7 +11,8 @@
 <%= form_with(
       url: admin_student_update_test_scores_path(@student),
       method: :patch,
-      local: true
+      local: true,
+      class: "score-form"
     ) do %>
 
   <%= hidden_field_tag :term, @term %>
@@ -30,11 +31,13 @@
     <tbody>
       <% @subjects.each do |subject| %>
         <% score = @scores_by_subject[subject] %>
-        <tr>
-          <td class="subject-name">
+
+        <tr class="subject-row <%= subject %>">
+          <td class="subject-name <%= subject %>">
             <%= I18n.t("activerecord.enums.score.subject.#{subject}") %>
           </td>
-          <td class="subject-score">
+
+          <td class="subject-score <%= subject %>">
             <%= number_field_tag "scores[#{subject}][score]",
                   score&.score,
                   min: 0,
@@ -49,9 +52,10 @@
 
   <div class="score-actions">
     <%= submit_tag "成績を更新する", class: "score-submit" %>
-    <%= link_to "キャンセル", admin_student_path(@student), class: "score-cancel" %>
+    <%= link_to "キャンセル",
+          admin_student_path(@student),
+          class: "score-cancel" %>
   </div>
-
 <% end %>
 
 <div class="score-divider"></div>
@@ -60,13 +64,10 @@
   <%= button_to "このテストの成績をすべて削除",
         admin_student_destroy_test_scores_path(@student),
         method: :delete,
-        params: {
-          term: @term,
-          test_type: @test_type
-        },
+        params: { term: @term, test_type: @test_type },
         data: { confirm: "このテストの成績をすべて削除します。よろしいですか？" } %>
 </div>
 
 <div class="score-back">
-  <%= link_to "成績一覧に戻る", admin_student_path(@student) %>
+  <%= link_to "← 成績一覧に戻る", admin_student_path(@student) %>
 </div>

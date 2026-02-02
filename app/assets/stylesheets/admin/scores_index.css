@@ -1,46 +1,84 @@
-/* ===== 成績一覧 共通 ===== */
+/* ===== 中央寄せ ===== */
+
+.admin-page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== ヘッダー ===== */
+
+.scores-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
 
 .scores-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: 28px;
+  font-weight: 800;
 }
 
-.scores-actions {
-  text-align: right;
-  margin-bottom: 1.5rem;
+.score-student {
+  font-size: 14px;
+  color: #475569;
 }
+
+/* ===== ボタン ===== */
 
 .btn.btn-primary {
-  padding: 0.6rem 1.2rem;
+  padding: 10px 20px;
   background: #4f46e5;
   color: #fff;
-  border-radius: 0.5rem;
-  text-decoration: none;
+  border-radius: 10px;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .btn.btn-primary:hover {
   background: #4338ca;
 }
 
+/* 編集ボタン（スマート） */
+.btn-edit {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: #dbeafe;
+}
+
 /* ===== テーブル ===== */
+
+.scores-table-wrapper {
+  overflow-x: auto;
+}
 
 .scores-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;   /* 外枠を少し濃く */
+  border-radius: 14px;
   overflow: hidden;
 }
 
 .scores-th {
   background: #f9fafb;
-  padding: 0.75rem;
+  padding: 12px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 13px;
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -51,7 +89,7 @@
 }
 
 .scores-th.action {
-  width: 10%;
+  width: 8%;
   text-align: right;
 }
 
@@ -59,10 +97,10 @@
   background: #f8fafc;
 }
 
-/* ===== 左端（学期） ===== */
+/* ===== 学期 ===== */
 
 .scores-term {
-  padding: 0.75rem;
+  padding: 12px;
 }
 
 .term-label {
@@ -70,61 +108,87 @@
 }
 
 .test-type {
-  font-size: 0.8rem;
+  font-size: 12px;
   color: #6b7280;
 }
 
-/* ===== 点数セル ===== */
+/* ===== 点数 ===== */
 
 .scores-cell {
   text-align: center;
-  padding: 0.75rem;
+  padding: 12px;
+  border-left: 1px solid #f1f5f9; /* 内側の薄い区切り */
 }
 
 .score-value {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 14px;
 }
 
-/* 点数あり */
-.score-value.has-score {
-  background: #eef2ff;
-  color: #4338ca;
+/* ===== 教科カラー ===== */
+
+/* 数学 */
+.math {
+  background: #eff6ff;
+}
+.math .score-value {
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 
-/* 点数なし */
-.score-value.no-score {
-  background: #f3f4f6;
-  color: #9ca3af;
+/* 英語 */
+.english {
+  background: #f5f3ff;
+}
+.english .score-value {
+  background: #ede9fe;
+  color: #6d28d9;
 }
 
-/* ===== 操作列 ===== */
+/* 国語 */
+.japanese {
+  background: #fdf2f8;
+}
+.japanese .score-value {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+/* 理科 */
+.science {
+  background: #ecfdf5;
+}
+.science .score-value {
+  background: #d1fae5;
+  color: #047857;
+}
+
+/* 社会 */
+.social {
+  background: #fff7ed;
+}
+.social .score-value {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+/* ===== 操作 ===== */
 
 .scores-action {
   text-align: right;
-  padding: 0.75rem;
+  padding: 12px;
 }
 
-.edit-link {
-  color: #4f46e5;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.edit-link:hover {
-  text-decoration: underline;
-}
-
-/* ===== 区切り線 ===== */
+/* ===== 区切り ===== */
 
 .scores-divider {
-  margin: 3rem 0 2rem;
+  margin: 48px 0 32px;
   border: none;
   border-top: 1px solid #e5e7eb;
 }
@@ -132,20 +196,24 @@
 /* ===== グラフ ===== */
 
 .chart-title {
-  font-size: 1.5rem;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 24px;
+}
+
+.chart-section {
+  margin-bottom: 32px;
 }
 
 .chart-subtitle {
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: 600;
-  margin: 1.5rem 0 1rem;
+  margin-bottom: 12px;
 }
 
 .chart-wrapper {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  padding: 1rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
 }

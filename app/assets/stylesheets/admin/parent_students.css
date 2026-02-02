@@ -89,7 +89,7 @@
 /* ボタン */
 .submit-button {
   width: 100%;
-  background: #3b82f6;
+  background: #1e6ef8;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -100,7 +100,7 @@
 }
 
 .submit-button:hover {
-  background: #ab121a;
+  background: #3f7ff7;
 }
 
 /* 戻るリンク */

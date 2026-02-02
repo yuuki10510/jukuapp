@@ -1,17 +1,27 @@
+/* ===== お知らせ作成　===== */
+.admin-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
 /* ===== ページタイトル ===== */
 .page-title {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 /* ===== フォームカード ===== */
 .form-card {
   max-width: 720px;
+  margin: 0 auto;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 /* ===== フォーム共通 ===== */
@@ -27,7 +37,7 @@
   margin-bottom: 6px;
 }
 
-/* ===== 入力系 ===== */
+/* ===== 入力系（はみ出し防止が核心） ===== */
 .form-input,
 .form-textarea,
 .form-select {
@@ -37,6 +47,7 @@
   border: 1px solid #d1d5db;
   font-size: 14px;
   transition: all 0.2s;
+  box-sizing: border-box; /* ← これが最重要 */
 }
 
 .form-textarea {
@@ -67,10 +78,12 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
   background: #2563eb;
+  transform: translateY(-1px);
 }
 
 /* ===== 戻るリンク ===== */

@@ -1,9 +1,18 @@
-/* ===== 生徒一覧 ===== */
+/* ===== 共通：中央寄せコンテナ ===== */
+
+.admin-page-container {
+  max-width: 1000px;   /* テーブルなので少し広め */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== 生徒一覧タイトル ===== */
 
 .students-title {
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: 800;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 /* ===== フィルター ===== */
@@ -18,6 +27,7 @@
   border-radius: 14px;
   border: 1px solid #e2e8f0;
   margin-bottom: 32px;
+  box-sizing: border-box;
 }
 
 .filter-group {
@@ -101,14 +111,25 @@
   color: #475569;
 }
 
-/* ===== 操作 ===== */
+/* ===== 操作列 ===== */
 
-.actions {
+.students-table th.actions,
+.students-table td.actions {
   text-align: right;
+  vertical-align: middle;
+}
+
+.students-table td.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
 }
 
 .action-link {
-  margin-right: 12px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
   font-weight: 600;
   color: #2563eb;
   text-decoration: none;
@@ -120,6 +141,7 @@
 
 .action-link.danger {
   color: #dc2626;
+  margin-left: 32px;
 }
 
 /* ===== 退塾行 ===== */
@@ -129,26 +151,8 @@
   background: #fafafa;
 }
 
-/* ===== 操作列のズレ修正 ===== */
-
-/* ヘッダとセルの右寄せを完全一致させる */
-.students-table th.actions,
-.students-table td.actions {
-  text-align: right;
-  vertical-align: middle;
-}
-
-/* 操作リンクを横並び＋中央揃え */
-.students-table td.actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-}
-
-/* リンク自体の高さズレ防止 */
-.action-link {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
+.action-link.danger::before {
+  content: "|";
+  margin-right: 32px;
+  color: #e5e7eb;
 }
