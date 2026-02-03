@@ -1,24 +1,106 @@
-# README
+1. サービス名
+塾管理アプリ（Study Management System）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2. サービスの概要
+本サービスは、学習塾における 生徒管理・成績管理・お知らせ配信・保護者連携を一元的に行う Web アプリケーションです。
+管理者・保護者・生徒の 3つのロールを想定し、 それぞれの立場に応じた機能・画面を提供することで、 塾運営の効率化と情報共有の円滑化を目的としています。
 
-Things you may want to cover:
+3. 開発背景
+自身が前職にて 学習塾の運営に携わっていた経験から、本サービスの開発に至りました。
+塾の運営においては、生徒の成績管理や保護者への連絡、生徒と保護者の情報整理など、多くの業務を日常的に行う必要があります。 その中で、今回作成したアプリのように 成績・お知らせ・生徒情報を一元管理できる仕組みがあることで、業務をより効率的に進めることができていました。
+また、運営を通して感じた課題の一つに、 保護者や生徒が「なぜ塾に通っているのか」を見失ってしまうことがあるという点がありました。
+成績や学習状況が可視化されていないと、塾に通う目的が曖昧になり、学習へのモチベーション低下にもつながります。 そこで、成績やお知らせをアプリ上で確認できるようにすることで、
+* 学習の成果を客観的に把握できる
+* 塾に通う目的を再認識できる
+* 保護者・生徒・塾の間で情報を共有できる
 
-* Ruby version
+このような環境を実現したいと考え、本サービスを開発しました。
 
-* System dependencies
+4. 機能
+■ 管理者機能
+* 管理者ログイン / ログアウト
+* 生徒の成績の確認・新規登録・編集・削除
+* お知らせの新規作成・編集・削除
+* 保護者と生徒の紐付け・紐付け解除
+* 生徒の退塾処理
+■ 保護者機能
+* ユーザー登録（ロール選択）
+* ログイン / ログアウト
+* 紐付けられた生徒の成績確認
+* お知らせの確認
+* ユーザー情報の編集
+■ 生徒機能
+* ユーザー登録（ロール選択）
+* ログイン / ログアウト
+* 自身の成績確認
+* お知らせの確認
+* ユーザー情報の編集
 
-* Configuration
+5. 主な使用技術
+フロントエンド
+* HTML / CSS / JavaScript
+* Rails 標準の View（ERB）による画面構築
+* 画面ごと・共通パーツごとに分離した CSS 設計（UI/UX を意識したスタイリング）
 
-* Database creation
+バックエンド
+* Ruby
+* Ruby on Rails
+* Devise（ユーザー認証・ログイン管理）
+* SQLite（開発環境のデータベース）
 
-* Database initialization
+インフラ・開発環境
+* Git / GitHub（バージョン管理）
+* ローカル環境での開発（Rails 標準構成）
 
-* How to run the test suite
+6. ER図
 
-* Services (job queues, cache servers, search engines, etc.)
+User
+├─ id
+├─ name
+├─ email
+├─ encrypted_password
+├─ role（admin / parent / student）
+├─ created_at
+└─ updated_at
 
-* Deployment instructions
+ParentStudent
+├─ id
+├─ parent_id   ← User
+├─ student_id  ← User
+└─ created_at
 
-* ...
+Score
+├─ id
+├─ student_id  ← User
+├─ subject
+├─ score
+├─ created_at
+└─ updated_at
+
+Announcement
+├─ id
+├─ title
+├─ body
+├─ target_role（all / parent / student）
+├─ created_at
+└─ updated_at
+
+StudentProfile
+├─ id
+├─ user_id ← User
+└─ created_at
+
+Withdrawal
+├─ id
+├─ user_id ← User
+└─ created_at
+
+
+7. 今後の展望
+今後は、より実際の塾運営に近づけるため、以下の機能拡張を検討しています。
+* 保護者とのメッセージ機能 個別の連絡や相談をアプリ内で完結できるようにする
+* 欠席・遅刻の簡易連絡機能 電話や紙での連絡を減らし、保護者が簡単に連絡できる仕組みを追加
+* 通知表の点数入力機能 定期テストだけでなく、通知表の点数も記録・確認できるようにする
+* お知らせの既読機能 お知らせを誰が確認したかを把握できるようにし、情報伝達の精度を向上させる
+
+これらの機能を追加することで、 塾・保護者・生徒のコミュニケーションをより円滑にし、 実務で使える完成度の高いサービスへと発展させていきたいと考えています。
