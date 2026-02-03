@@ -8,7 +8,6 @@
 <img width="1435" height="815" alt="スクリーンショット 2026-02-03 18 17 18" src="https://github.com/user-attachments/assets/feca04f6-c3fd-41c7-a0da-8fae6becdb4c" />
 <img width="1427" height="629" alt="スクリーンショット 2026-02-03 18 17 35" src="https://github.com/user-attachments/assets/993fe0fd-6431-460f-a049-bfada278d770" />
 <img width="1430" height="808" alt="スクリーンショット 2026-02-03 18 17 46" src="https://github.com/user-attachments/assets/c396b19f-49c2-4e05-967c-4722baeff4aa" />
-872439d5e" />
 <img width="1435" height="816" alt="スクリーンショット 2026-02-03 18 17 59" src="https://github.com/user-attachments/assets/bdb22447-1cbf-407b-835a-d6518820009e" />
 <img width="1433" height="813" alt="スクリーンショット 2026-02-03 18 18 09" src="https://github.com/user-attachments/assets/b3c29963-e518-4bc3-b234-276303f263fa" />
 <img width="1432" height="812" alt="スクリーンショット 2026-02-03 18 22 53" src="https://github.com/user-attachments/assets/939d0562-e4f3-482b-8102-f36604fc8385" />
@@ -71,45 +70,45 @@
 7. ER図
 
 User
-├─ id
-├─ name
-├─ email
-├─ encrypted_password
-├─ role（admin / parent / student）
-├─ created_at
-└─ updated_at
+- id
+- name
+- email
+- encrypted_password
+- role (admin / parent / student)
+- created_at
+- updated_at
 
 ParentStudent
-├─ id
-├─ parent_id   ← User
-├─ student_id  ← User
-└─ created_at
+- id
+- parent_id   -> User
+- student_id  -> User
+- created_at
 
 Score
-├─ id
-├─ student_id  ← User
-├─ subject
-├─ score
-├─ created_at
-└─ updated_at
+- id
+- student_id  -> User
+- subject
+- score
+- created_at
+- updated_at
 
 Announcement
-├─ id
-├─ title
-├─ body
-├─ target_role（all / parent / student）
-├─ created_at
-└─ updated_at
+- id
+- title
+- body
+- target_role (all / parent / student)
+- created_at
+- updated_at
 
 StudentProfile
-├─ id
-├─ user_id ← User
-└─ created_at
+- id
+- user_id -> User
+- created_at
 
 Withdrawal
-├─ id
-├─ user_id ← User
-└─ created_at
+- id
+- user_id -> User
+- created_at
 
 
 8. 今後の展望
