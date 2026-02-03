@@ -3,6 +3,14 @@
 
 2.サービス画像
 <img width="1435" height="817" alt="スクリーンショット 2026-02-03 17 59 42" src="https://github.com/user-attachments/assets/a170ef3a-904c-433c-aa06-3f066668fbec" />
+<img width="1438" height="816" alt="スクリーンショット 2026-02-03 18 16 50" src="https://github.com/user-attachments/assets/4cc3988e-46d0-40ef-ac42-ffbb1b45939d" />
+<img width="1427" height="814" alt="スクリーンショット 2026-02-03 18 17 06" src="https://github.com/user-attachments/assets/384bcf32-2515-49cf-aba7-9c8749d115ec" />
+<img width="1435" height="815" alt="スクリーンショット 2026-02-03 18 17 18" src="https://github.com/user-attachments/assets/feca04f6-c3fd-41c7-a0da-8fae6becdb4c" />
+<img width="1427" height="629" alt="スクリーンショット 2026-02-03 18 17 35" src="https://github.com/user-attachments/assets/b53c3f34-c5ae-410a-a036-089<img width="1430" height="808" alt="スクリーンショット 2026-02-03 18 17 46" src="https://github.com/user-attachments/assets/c396b19f-49c2-4e05-967c-4722baeff4aa" />
+872439d5e" />
+<img width="1435" height="816" alt="スクリーンショット 2026-02-03 18 17 59" src="https://github.com/user-attachments/assets/bdb22447-1cbf-407b-835a-d6518820009e" />
+<img width="1433" height="813" alt="スクリーンショット 2026-02-03 18 18 09" src="https://github.com/user-attachments/assets/b3c29963-e518-4bc3-b234-276303f263fa" />
+<img width="1432" height="812" alt="スクリーンショット 2026-02-03 18 22 53" src="https://github.com/user-attachments/assets/939d0562-e4f3-482b-8102-f36604fc8385" />
 
 
 3. サービスの概要
@@ -21,18 +29,21 @@
 このような環境を実現したいと考え、本サービスを開発しました。
 
 5. 機能
+
 ■ 管理者機能
 * 管理者ログイン / ログアウト
 * 生徒の成績の確認・新規登録・編集・削除
 * お知らせの新規作成・編集・削除
 * 保護者と生徒の紐付け・紐付け解除
 * 生徒の退塾処理
+
 ■ 保護者機能
 * ユーザー登録（ロール選択）
 * ログイン / ログアウト
 * 紐付けられた生徒の成績確認
 * お知らせの確認
 * ユーザー情報の編集
+
 ■ 生徒機能
 * ユーザー登録（ロール選択）
 * ログイン / ログアウト
