@@ -1,6 +1,4 @@
-
-1. サービス名
-塾マネ
+1.サービス名　塾マネ
 
 2.サービス画像
 <img width="1435" height="817" alt="スクリーンショット 2026-02-03 17 59 42" src="https://github.com/user-attachments/assets/a170ef3a-904c-433c-aa06-3f066668fbec" />
