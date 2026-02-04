@@ -1,4 +1,4 @@
-<% if resource&.errors&.any? || flash[:alert].present? %>
+<% if request.post? && (resource&.errors&.any? || flash[:alert].present?) %>
   <div class="validation-errors">
     <div class="validation-errors__title">
       入力内容に誤りがあります
