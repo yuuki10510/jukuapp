@@ -1,4 +1,9 @@
 <% flash.each do |type, message| %>
+  <% next if controller_name == "sessions" &&
+             action_name == "new" &&
+             type.to_sym == :alert &&
+             request.get? %>
+
   <% css_class =
       case type.to_sym
       when :notice then "flash flash-notice"
