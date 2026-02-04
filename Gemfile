@@ -10,9 +10,14 @@ gem "jbuilder"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# =========================
+# Solid 系
+# =========================
+group :development, :test do
+  gem "solid_cache"
+  gem "solid_queue"
+  gem "solid_cable"
+end
 
 gem "bootsnap", require: false
 gem "kamal", require: false
