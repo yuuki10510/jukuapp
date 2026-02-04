@@ -1,23 +1,14 @@
 1.サービス名
+
 塾マネ
 
-2.サービス画像
-<img width="1435" height="817" alt="スクリーンショット 2026-02-03 17 59 42" src="https://github.com/user-attachments/assets/a170ef3a-904c-433c-aa06-3f066668fbec" />
-<img width="1438" height="816" alt="スクリーンショット 2026-02-03 18 16 50" src="https://github.com/user-attachments/assets/4cc3988e-46d0-40ef-ac42-ffbb1b45939d" />
-<img width="1427" height="814" alt="スクリーンショット 2026-02-03 18 17 06" src="https://github.com/user-attachments/assets/384bcf32-2515-49cf-aba7-9c8749d115ec" />
-<img width="1435" height="815" alt="スクリーンショット 2026-02-03 18 17 18" src="https://github.com/user-attachments/assets/feca04f6-c3fd-41c7-a0da-8fae6becdb4c" />
-<img width="1427" height="629" alt="スクリーンショット 2026-02-03 18 17 35" src="https://github.com/user-attachments/assets/993fe0fd-6431-460f-a049-bfada278d770" />
-<img width="1430" height="808" alt="スクリーンショット 2026-02-03 18 17 46" src="https://github.com/user-attachments/assets/c396b19f-49c2-4e05-967c-4722baeff4aa" />
-<img width="1435" height="816" alt="スクリーンショット 2026-02-03 18 17 59" src="https://github.com/user-attachments/assets/bdb22447-1cbf-407b-835a-d6518820009e" />
-<img width="1433" height="813" alt="スクリーンショット 2026-02-03 18 18 09" src="https://github.com/user-attachments/assets/b3c29963-e518-4bc3-b234-276303f263fa" />
-<img width="1432" height="812" alt="スクリーンショット 2026-02-03 18 22 53" src="https://github.com/user-attachments/assets/939d0562-e4f3-482b-8102-f36604fc8385" />
+2.サービスの概要
 
-
-3. サービスの概要
 本サービスは、学習塾における 生徒管理・成績管理・お知らせ配信・保護者連携を一元的に行う Web アプリケーションです。
 管理者・保護者・生徒の 3つのロールを想定し、 それぞれの立場に応じた機能・画面を提供することで、 塾運営の効率化と情報共有の円滑化を目的としています。
 
-4. 開発背景
+3.開発背景
+
 自身が前職にて 学習塾の運営に携わっていた経験から、本サービスの開発に至りました。
 塾の運営においては、生徒の成績管理や保護者への連絡、生徒と保護者の情報整理など、多くの業務を日常的に行う必要があります。 その中で、今回作成したアプリのように 成績・お知らせ・生徒情報を一元管理できる仕組みがあることで、業務をより効率的に進めることができていました。
 また、運営を通して感じた課題の一つに、 保護者や生徒が「なぜ塾に通っているのか」を見失ってしまうことがあるという点がありました。
@@ -27,6 +18,53 @@
 * 保護者・生徒・塾の間で情報を共有できる
 
 このような環境を実現したいと考え、本サービスを開発しました。
+
+4.サービス画像
+
+・管理者トップページ
+管理者が操作できる主要機能への導線と、直近のお知らせを一覧で確認できるページです。
+<img width="1435" height="817" alt="スクリーンショット 2026-02-03 17 59 42" src="https://github.com/user-attachments/assets/a170ef3a-904c-433c-aa06-3f066668fbec" />
+
+・生徒一覧ページ
+
+登録されている生徒の一覧を表示し、成績の入力や退塾の処理への導線を確認できるページです。
+<img width="1438" height="816" alt="スクリーンショット 2026-02-03 18 16 50" src="https://github.com/user-attachments/assets/4cc3988e-46d0-40ef-ac42-ffbb1b45939d" />
+
+・成績一覧ページ（管理者）
+
+生徒ごとの成績を一覧で確認でき、成績の新規登録・編集・削除が可能です。
+<img width="1427" height="814" alt="スクリーンショット 2026-02-03 18 17 06" src="https://github.com/user-attachments/assets/384bcf32-2515-49cf-aba7-9c8749d115ec" />
+
+・成績入力ページ
+
+科目や点数を入力し、生徒の成績を登録するためのページです。
+<img width="1435" height="815" alt="スクリーンショット 2026-02-03 18 17 18" src="https://github.com/user-attachments/assets/feca04f6-c3fd-41c7-a0da-8fae6becdb4c" />
+
+・保護者一覧ページ
+
+登録されている保護者の一覧を表示し、紐付いている生徒の確認や生徒の紐付け・解除を行えます。
+<img width="1427" height="629" alt="スクリーンショット 2026-02-03 18 17 35" src="https://github.com/user-attachments/assets/993fe0fd-6431-460f-a049-bfada278d770" />
+
+・生徒紐付けページ
+
+選択した保護者に対して、生徒を紐付けるためのページです。
+中間テーブルを用いて安全に関連付けを行っています。
+<img width="1430" height="808" alt="スクリーンショット 2026-02-03 18 17 46" src="https://github.com/user-attachments/assets/c396b19f-49c2-4e05-967c-4722baeff4aa" />
+
+・お知らせ一覧ページ（管理者）
+
+保護者・生徒向けのお知らせを一覧で管理し、新規作成や編集が行えます。
+<img width="1435" height="816" alt="スクリーンショット 2026-02-03 18 17 59" src="https://github.com/user-attachments/assets/bdb22447-1cbf-407b-835a-d6518820009e" />
+
+・お知らせ新規作成ページ（管理者）
+
+保護者・生徒などの対象を選択してお知らせの作成ができるページです。
+<img width="1433" height="813" alt="スクリーンショット 2026-02-03 18 18 09" src="https://github.com/user-attachments/assets/b3c29963-e518-4bc3-b234-276303f263fa" />
+
+・ユーザー情報編集ページ
+
+ユーザーが自身の登録情報を編集できるページです。
+<img width="1432" height="812" alt="スクリーンショット 2026-02-03 18 22 53" src="https://github.com/user-attachments/assets/939d0562-e4f3-482b-8102-f36604fc8385" />
 
 5. 機能
 
@@ -68,54 +106,22 @@
 * ローカル環境での開発（Rails 標準構成）
 
 7. ER図
-
-User
-- id
-- name
-- email
-- encrypted_password
-- role (admin / parent / student)
-- created_at
-- updated_at
-
-ParentStudent
-- id
-- parent_id   -> User
-- student_id  -> User
-- created_at
-
-Score
-- id
-- student_id  -> User
-- subject
-- score
-- created_at
-- updated_at
-
-Announcement
-- id
-- title
-- body
-- target_role (all / parent / student)
-- created_at
-- updated_at
-
-StudentProfile
-- id
-- user_id -> User
-- created_at
-
-Withdrawal
-- id
-- user_id -> User
-- created_at
+<img width="1536" height="1024" alt="ChatGPT Image 2026年2月4日 21_33_39" src="https://github.com/user-attachments/assets/d8487eaf-7dfb-4345-83b7-1527c1f353f7" />
 
 
 8. 今後の展望
 今後は、より実際の塾運営に近づけるため、以下の機能拡張を検討しています。
-* 保護者とのメッセージ機能 個別の連絡や相談をアプリ内で完結できるようにする
-* 欠席・遅刻の簡易連絡機能 電話や紙での連絡を減らし、保護者が簡単に連絡できる仕組みを追加
-* 通知表の点数入力機能 定期テストだけでなく、通知表の点数も記録・確認できるようにする
-* お知らせの既読機能 お知らせを誰が確認したかを把握できるようにし、情報伝達の精度を向上させる
+* 保護者とのメッセージ機能
+
+  個別の連絡や相談をアプリ内で完結できるようにする
+* 欠席・遅刻の簡易連絡機能
+
+  電話や紙での連絡を減らし、保護者が簡単に連絡できる仕組みを追加
+* 通知表の点数入力機能
+
+  定期テストだけでなく、通知表の点数も記録・確認できるようにする
+* お知らせの既読機能
+
+  お知らせを誰が確認したかを把握できるようにし、情報伝達の精度を向上させる
 
 これらの機能を追加することで、 塾・保護者・生徒のコミュニケーションをより円滑にし、 実務で使える完成度の高いサービスへと発展させていきたいと考えています。
